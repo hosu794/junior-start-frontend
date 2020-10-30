@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import Layout from "./styles/Layout";
 import Navbar from "./components/navbar/Navbar";
 import LeftMenu from "./components/leftMenu/LeftMenu";
