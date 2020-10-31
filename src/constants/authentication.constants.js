@@ -1,4 +1,4 @@
-const autnenticationConstants = {
+export const autnenticationConstants = {
     SIGNIN_REQUEST: "SIGNIN_REQUEST",
     SIGNIN_SUCCESS: "SIGNIN_SUCCESS", 
     SIGNIN_FAILURE: "SIGNIN_FAILURE",
