@@ -30,6 +30,18 @@ const GlobalStyle = createGlobalStyle`
   *, *::before, *::after {
     box-sizing: border-box;
   }
+  
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: white !important;
+  }
+  
+  h1, h2, h3, h4, h5 {
+    margin-top: 0;
+  }
 `
 
 const StyledWrapper = styled.div`
