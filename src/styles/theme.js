@@ -21,7 +21,8 @@ export const theme = createMuiTheme({
     overrides: {
         MuiPaper: {
             root: {
-                color: 'white'
+                color: 'white',
+                padding: '1em'
             },
         },
         MuiInputBase: {

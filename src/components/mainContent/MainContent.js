@@ -7,7 +7,7 @@ import MessengerPage from "./messenger/MessengerPage";
 class MainContent extends Component {
     render() {
         return (
-            <MainContentLayout>
+            <MainContentLayout id='mainContent'>
                 <Switch>
                     <Route exact path='/' component={PostsPage}/>
                     <Route exact path='/wiadomosci/' component={MessengerPage}/>
