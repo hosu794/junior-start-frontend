@@ -7,20 +7,23 @@ import RightMenu from "./components/rightMenu/RightMenu";
 import Footer from "./components/footer/Footer";
 import Divider from "@material-ui/core/Divider";
 import {ContentLayout} from "./styles/contentStyles";
+import {BrowserRouter as Router} from "react-router-dom";
 
 function App() {
     return (
         <Layout>
-            <Navbar/>
-            <ContentLayout>
-                <LeftMenu/>
-                <Divider orientation="vertical" flexItem/>
-                <MainContent/>
-                <Divider orientation="vertical" flexItem/>
-                <RightMenu/>
-            </ContentLayout>
-            <Divider/>
-            <Footer/>
+            <Router>
+                <Navbar/>
+                <ContentLayout>
+                    <LeftMenu/>
+                    <Divider orientation="vertical" flexItem/>
+                    <MainContent/>
+                    <Divider orientation="vertical" flexItem/>
+                    <RightMenu/>
+                </ContentLayout>
+                <Divider/>
+                <Footer/>
+            </Router>
         </Layout>
     );
 }
