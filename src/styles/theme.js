@@ -8,7 +8,10 @@ export const theme = createMuiTheme({
         background: {
             paper: '#424242'
         },
-        divider: 'rgba(255, 255, 255, 0.12)'
+        divider: 'rgba(255, 255, 255, 0.12)',
+    },
+    typography: {
+        fontFamily: "Montserrat"
     },
     props: {
         MuiSvgIcon: {
@@ -16,12 +19,22 @@ export const theme = createMuiTheme({
         }
     },
     overrides: {
+        MuiPaper: {
+            root: {
+                color: 'white'
+            },
+        },
         MuiInputBase: {
             input: {
                 "&::placeholder": {
                     color: "white"
                 },
                 color: "white"
+            }
+        },
+        MuiFormLabel: {
+            root: {
+                color: '#c4c4c4'
             }
         }
     }
