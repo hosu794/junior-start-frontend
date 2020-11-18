@@ -9,6 +9,7 @@ export const MessengerPageLayout = styled.div`
 export const ConversationLayout = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
   padding: 10px;
 `
 
@@ -44,10 +45,11 @@ export const Time = styled.div`
 `
 
 export const ContactsLayout = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: none;
   
   @media only screen and (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
     padding: 10px;
   }
 `
