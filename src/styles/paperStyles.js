@@ -3,6 +3,6 @@ import Paper from "@material-ui/core/Paper";
 
 export const CustomPaper = styled(Paper)`
   display: flex;
-  padding: 1.8em 1.1em;
+  padding: 1.5em 1.5em;
   outline: 0;
 `

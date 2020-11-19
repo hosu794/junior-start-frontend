@@ -1,18 +1,17 @@
 import React, {Component} from "react";
-import IconButton from "@material-ui/core/IconButton";
-import SearchIcon from '@material-ui/icons/Search';
-import {InputBaseLayout, MainContentLayout, PaperLayout} from "../../styles/mainContentStyles";
+import {MainContentLayout} from "../../styles/mainContentStyles";
+import {Route, Switch} from "react-router-dom";
+import PostsPage from "./posts/PostsPage";
+import MessengerPage from "./messenger/MessengerPage";
 
 class MainContent extends Component {
     render() {
         return (
-            <MainContentLayout>
-                <PaperLayout>
-                    <InputBaseLayout placeholder="Szukaj"/>
-                    <IconButton type="submit">
-                        <SearchIcon/>
-                    </IconButton>
-                </PaperLayout>
+            <MainContentLayout id='mainContent'>
+                <Switch>
+                    <Route exact path='/' component={PostsPage}/>
+                    <Route exact path='/wiadomosci/' component={MessengerPage}/>
+                </Switch>
             </MainContentLayout>
         );
     }

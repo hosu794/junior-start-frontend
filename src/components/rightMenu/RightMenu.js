@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import Button from "@material-ui/core/Button";
 import {MenuLayout} from "../../styles/menuStyles";
+import {Link} from "react-router-dom";
 
 class RightMenu extends Component {
     render() {
@@ -20,6 +21,9 @@ class RightMenu extends Component {
                 </Button>
                 <Button variant="outlined" color="primary">
                     Nabór do projektu
+                </Button>
+                <Button component={Link} to='wiadomosci' variant="outlined" color="primary">
+                    Wiadomości
                 </Button>
             </MenuLayout>
         );
