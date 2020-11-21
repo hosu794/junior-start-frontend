@@ -1,12 +1,14 @@
-import {autnenticationConstants} from '../constants'
-import {authHeader, handleResponse} from '../utils/api'
-import {authenticationService} from '../services'
-import {history} from '../utils'
+import { authHeader, handleResponse } from '../utils/api'
+import { authenticationService } from '../services'
+import { history } from '../utils'
+import { authenticationConstants } from '../constants'
+import { alertActions } from './'
 
 export const authenticationActions = {
     logout,
     register,
-    login
+    login,
+    clearError
 };
 
 function login({ usernameOrEmail, password }, service = authenticationService.login) {
@@ -28,15 +30,15 @@ function login({ usernameOrEmail, password }, service = authenticationService.lo
     };
 
     function request(user) {
-        return { type: authConstants.LOGIN_REQUEST, user };
+        return { type: authenticationConstants.LOGIN_REQUEST, user };
     }
 
     function success(user) {
-        return { type: authConstants.LOGIN_SUCCESS, user };
+        return { type: authenticationConstants.LOGIN_SUCCESS, user };
     }
 
     function failure(error) {
-        return { type: authConstants.LOGIN_FAILURE, error };
+        return { type: authenticationConstants.LOGIN_FAILURE, error };
     }
 }
 
@@ -44,7 +46,7 @@ function logout() {
     authenticationService.logout();
 
     return {
-        type: authConstants.LOGOUT,
+        type: authenticationConstants.LOGOUT,
     };
 }
 
@@ -69,20 +71,19 @@ function register(user, service = authenticationService.register) {
     };
 
     function request(user) {
-        return { type: authConstants.REGISTER_REQUEST, user };
+        return { type: authenticationConstants.REGISTER_REQUEST, user };
     }
 
     function success(user) {
-        return { type: authConstants.REGISTER_SUCCESS, user };
+        return { type: authenticationConstants.REGISTER_SUCCESS, user };
     }
 
     function failure(error) {
-        return { type: authConstants.REGISTER_FAILURE, error };
+        return { type: authenticationConstants.REGISTER_FAILURE, error };
     }
 }
 
 
-
 function clearError() {
-    return { type: authConstants.CLEAR_ERROR };
+    return { type: authenticationConstants.CLEAR_ERROR };
 }
