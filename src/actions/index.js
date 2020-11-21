@@ -1,2 +1,4 @@
 export * from './authentication.actions'
-export * from './alertActions'
+export * from './alert.actions'
+export * from './user.actions'
+export * from './oauth2.actions'

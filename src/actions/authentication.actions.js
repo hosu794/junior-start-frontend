@@ -8,53 +8,69 @@ export const authenticationActions = {
     logout,
     register,
     login,
-    clearError
+    clearError,
+    logoutAuth02token
 };
 
-function login({ usernameOrEmail, password }, service = authenticationService.login) {
-    return (dispatch) => {
-        dispatch(request({ usernameOrEmail, password }));
+function login({ email, password }, service = authenticationService.login) {
 
-        return service({ usernameOrEmail, password }).then(
+
+
+    return (dispatch) => {
+        dispatch(request({ email, password }));
+
+        return service({ email, password }).then(
             (user) => {
                 dispatch(success(user));
                 history.push("/");
                 window.location.reload(true);
             },
             (error) => {
+
                 handleResponse(error);
                 dispatch(failure(error.response.data.error));
                 dispatch(alertActions.error(error.response.data.error));
+
             }
         );
     };
 
     function request(user) {
-        return { type: authenticationConstants.LOGIN_REQUEST, user };
+        return { type: authenticationConstants.SIGNIN_REQUEST, user };
     }
 
     function success(user) {
-        return { type: authenticationConstants.LOGIN_SUCCESS, user };
+        return { type: authenticationConstants.SIGNIN_SUCCESS, user };
     }
 
     function failure(error) {
-        return { type: authenticationConstants.LOGIN_FAILURE, error };
+        return { type: authenticationConstants.SIGNIN_FAILURE, error };
     }
 }
 
-function logout() {
-    authenticationService.logout();
+function logout(service = authenticationService.logout) {
 
+    service();
+    window.location.reload(true);
     return {
         type: authenticationConstants.LOGOUT,
     };
 }
 
+function logoutAuth02token(service = authenticationService.logoutAuth02token) {
+    service();
+    window.location.reload(true)
+    return {
+        type: authenticationConstants.LOGOUT
+    }
+}
+
 function register(user, service = authenticationService.register) {
+
     return (dispatch) => {
         dispatch(request(user));
 
-        console.log("Some");
+
         return service(user).then(
             (user) => {
                 dispatch(success());
@@ -71,15 +87,15 @@ function register(user, service = authenticationService.register) {
     };
 
     function request(user) {
-        return { type: authenticationConstants.REGISTER_REQUEST, user };
+        return { type: authenticationConstants.SIGNUP_REQUEST, user };
     }
 
     function success(user) {
-        return { type: authenticationConstants.REGISTER_SUCCESS, user };
+        return { type: authenticationConstants.SIGNUP_SUCCESS, user };
     }
 
     function failure(error) {
-        return { type: authenticationConstants.REGISTER_FAILURE, error };
+        return { type: authenticationConstants.SIGNUP_FAILURE, error };
     }
 }
 

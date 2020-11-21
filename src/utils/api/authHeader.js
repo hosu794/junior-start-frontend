@@ -1,4 +1,4 @@
-let user = JSON.parse(localStorage.getItem("user"));
+let user = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : localStorage.getItem("oauthtoken");
 
 export function authHeader(authenticatedUser = user) {
   if (authenticatedUser) {
