@@ -7,9 +7,14 @@ import { registerValidationSchema } from "../../utils/validation";
 import { useDispatch } from "react-redux";
 import { authenticationActions } from "../../actions";
 import OAuth2Signup from "../oauth2/OAuth2Signup";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
+
+  function onChange(value) {
+    console.log("Captcha value:", value);
+  }
 
   function signUp(username, email, password) {
     dispatch(authenticationActions.signUp({ username, email, password }));
@@ -56,6 +61,10 @@ const SignUpForm = () => {
             variant="outlined"
             name="passwordConfirm"
             type="password"
+          />
+          <ReCAPTCHA
+            sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+            onChange={onChange}
           />
           <CustomCheckboxWithLabel
             name="acceptedTerms"
