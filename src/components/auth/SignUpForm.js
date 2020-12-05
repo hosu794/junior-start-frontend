@@ -30,7 +30,7 @@ const SignUpForm = () => {
                 }}
                 validationSchema={registerValidationSchema}
                 onSubmit={(values, { setSubmitting }) => {
-                    register(values.username, values.email, values.password);
+                    signUp(values.username, values.email, values.password);
                     setSubmitting(false)
                 }}>
                 <StyledForm>

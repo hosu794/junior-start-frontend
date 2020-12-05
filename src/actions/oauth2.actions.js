@@ -1,9 +1,8 @@
-import { FiberPinRounded } from "@material-ui/icons"
 import { oauth2Constants } from "../constants"
 import { oauth2Service } from '../services'
 import { handleResponse } from "../utils/api"
 import { alertActions } from "./alert.actions"
-import { userActions } from "./user.actions"
+
 
 export const oauth2Actions = {
     login, logout, register
