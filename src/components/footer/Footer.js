@@ -1,10 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import { FooterStyles } from "../../styles/footerStyles";
 
-const Footer = () => (
-    <FooterStyles>
-        ©2020
-    </FooterStyles>
-)
+const Footer = () => <FooterStyles>©2020</FooterStyles>;
 
 export default Footer;

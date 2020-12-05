@@ -1,24 +1,25 @@
-import React, { Component } from "react";
+import React from "react";
 import Button from "@material-ui/core/Button";
 import { MenuLayout } from "../../styles/menuStyles";
 
-const RightMenu = () => (<MenuLayout>
+const RightMenu = () => (
+  <MenuLayout>
     <Button variant="outlined" color="primary">
-        Stwórz projekt
+      Stwórz projekt
     </Button>
     <Button variant="outlined" color="primary">
-        Dodaj kod
+      Dodaj kod
     </Button>
     <Button variant="outlined" color="primary">
-        Szukaj pracy
+      Szukaj pracy
     </Button>
     <Button variant="outlined" color="primary">
-        Dodaj post na forum
+      Dodaj post na forum
     </Button>
     <Button variant="outlined" color="primary">
-        Nabór do projektu
+      Nabór do projektu
     </Button>
-</MenuLayout>
-)
+  </MenuLayout>
+);
 
 export default RightMenu;
