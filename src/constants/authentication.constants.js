@@ -5,6 +5,6 @@ export const authenticationConstants = {
     SIGNUP_REQUEST: "SIGNUP_REQUEST",
     SIGNUP_SUCCESS: "SIGNUP_SUCCESS",
     SIGNUP_FAILURE: "SIGNUP_FAILURE",
-    LOGOUT: "LOGOUT",
+    SIGN_OUT: "SIGN_OUT",
     CLEAR_ERROR: "CLEAR_ERROR"
 }

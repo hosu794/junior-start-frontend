@@ -13,8 +13,8 @@ const SignUpForm = () => {
 
     const dispatch = useDispatch();
 
-    function register(username, email, password) {
-        dispatch(authenticationActions.register({ username, email, password }));
+    function signUp(username, email, password) {
+        dispatch(authenticationActions.signUp({ username, email, password }));
     }
 
     return (

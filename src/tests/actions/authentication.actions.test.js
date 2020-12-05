@@ -38,9 +38,9 @@ describe('Test for the authentication actions', () => {
     store.clearActions();
   })
 
-  test("should create an action to login, wchich be success", async () => {
+  test("should create an action to signIn, which be success", async () => {
 
-    await store.dispatch(authenticationActions.login(loginCredentials, mockServiceCreator(tokenResponse)))
+    await store.dispatch(authenticationActions.signIn(loginCredentials, mockServiceCreator(tokenResponse)))
       .then(() => expect(store.getActions()).toContainEqual(
         {
           type: "SIGNIN_REQUEST", user: loginCredentials
@@ -54,7 +54,7 @@ describe('Test for the authentication actions', () => {
 
   test('should create an action to login, which be failure', async () => {
 
-    await store.dispatch(authenticationActions.login(loginCredentials, mockServiceCreator(mockError, false)))
+    await store.dispatch(authenticationActions.signIn(loginCredentials, mockServiceCreator(mockError, false)))
       .then(() => expect(store.getActions()).toContainEqual(
         { "type": "SIGNIN_REQUEST", "user": { "email": "example@example.com", "password": "password" } }, { "error": "mockError", "type": "SIGNIN_FAILURE" }, { "message": "mockError", "type": "ERROR" }
       ));
@@ -63,7 +63,7 @@ describe('Test for the authentication actions', () => {
 
   test('should create an action to register, which be success', async () => {
 
-    await store.dispatch(authenticationActions.register(signUpCredentials, mockServiceCreator(signUpResponse)))
+    await store.dispatch(authenticationActions.signUp(signUpCredentials, mockServiceCreator(signUpResponse)))
       .then(() => expect(store.getActions()).toContainEqual(
         {
           type: "SIGNUP_REQUEST", user: signUpCredentials
@@ -77,7 +77,7 @@ describe('Test for the authentication actions', () => {
 
   test('should create an action to register, which be failure', async () => {
 
-    await store.dispatch(authenticationActions.register(signUpCredentials, mockServiceCreator(mockError, false)))
+    await store.dispatch(authenticationActions.signUp(signUpCredentials, mockServiceCreator(mockError, false)))
       .then(() => expect(store.getActions()).toContainEqual(
         {
           type: 'SIGNUP_REQUEST',
@@ -89,10 +89,10 @@ describe('Test for the authentication actions', () => {
 
   })
 
-  test('should create an action to logout', async () => {
+  test('should create an action to SIGN_OUT', async () => {
 
     const expectedAction = {
-      type: "LOGOUT"
+      type: "SIGN_OUT"
     }
     expect(authenticationActions.logout()).toEqual(expectedAction)
   })

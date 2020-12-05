@@ -52,7 +52,7 @@ describe('authentication reducer', () => {
 
     it('should return state after LOGOUT', () => {
         expect(authentication(undefined, {
-            type: authenticationConstants.LOGOUT,
+            type: authenticationConstants.SIGN_OUT,
         })).toEqual({
             loading: false,
             loggedIn: false,

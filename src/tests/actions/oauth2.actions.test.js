@@ -25,7 +25,7 @@ describe('Test for the oauth2 actions', () => {
         store.clearActions();
     })
 
-    test('should create an action to login, wchich be success', async () => {
+    test('should create an action to login, which be success', async () => {
 
         await store.dispatch(oauth2Actions.login(mockToken, mockServiceCreator(tokenResponse)))
             .then(() => expect(store.getActions()).toContainEqual(
@@ -67,7 +67,7 @@ describe('Test for the oauth2 actions', () => {
         await store.dispatch(oauth2Actions.logout(mockServiceCreator()))
             .then(() => expect(store.getActions()).toContainEqual(
                 {
-                    type: oauth2Constants.LOGOUT
+                    type: oauth2Constants.SIGN_OUT
                 }
             ));
 

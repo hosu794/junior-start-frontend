@@ -6,13 +6,13 @@ import { alertActions } from './'
 
 export const authenticationActions = {
     logout,
-    register,
-    login,
+    signUp,
+    signIn,
     clearError,
     logoutAuth02token
 };
 
-function login({ email, password }, service = authenticationService.login) {
+function signIn({ email, password }, service = authenticationService.signIn) {
 
 
 
@@ -48,12 +48,12 @@ function login({ email, password }, service = authenticationService.login) {
     }
 }
 
-function logout(service = authenticationService.logout) {
+function logout(service = authenticationService.singOut) {
 
     service();
     window.location.reload(true);
     return {
-        type: authenticationConstants.LOGOUT,
+        type: authenticationConstants.SIGN_OUT,
     };
 }
 
@@ -61,11 +61,11 @@ function logoutAuth02token(service = authenticationService.logoutAuth02token) {
     service();
     window.location.reload(true)
     return {
-        type: authenticationConstants.LOGOUT
+        type: authenticationConstants.SIGN_OUT
     }
 }
 
-function register(user, service = authenticationService.register) {
+function signUp(user, service = authenticationService.signUp) {
 
     return (dispatch) => {
         dispatch(request(user));

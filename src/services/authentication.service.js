@@ -4,11 +4,11 @@ import { apiConstants } from '../constants'
 import axios from 'axios'
 
 export const authenticationService = {
-    login, register, logout, logoutAuth02token
+    signIn, signUp, singOut, logoutAuth02token
 }
 
 
-function login({ email, password }) {
+function signIn({ email, password }) {
     const body = JSON.stringify({ email, password })
 
     return axios
@@ -25,7 +25,7 @@ function login({ email, password }) {
         });
 }
 
-function register(user) {
+function signUp(user) {
 
 
     const body = JSON.stringify(user);
@@ -39,7 +39,7 @@ function register(user) {
     )
 }
 
-function logout() {
+function singOut() {
 
     localStorage.removeItem("user");
 

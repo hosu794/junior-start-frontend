@@ -52,7 +52,7 @@ function logout(service = oauth2Service.logout) {
     }
 
     function success() {
-        return { type: oauth2Constants.LOGOUT }
+        return { type: oauth2Constants.SIGN_OUT }
     }
 }
 

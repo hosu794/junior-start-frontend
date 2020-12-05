@@ -20,8 +20,8 @@ const SignInForm = () => {
         dispatch(authenticationActions.clearError())
     }, []);
 
-    function login(email, password) {
-        dispatch(authenticationActions.login({ email, password }))
+    function signIn(email, password) {
+        dispatch(authenticationActions.signIn({ email, password }))
     }
 
     return (
@@ -35,7 +35,7 @@ const SignInForm = () => {
                 }}
                 validationSchema={loginValidationSchema}
                 onSubmit={(values, { setSubmitting }) => {
-                    login(values.email, values.password)
+                    signIn(values.email, values.password)
                 }}>
                 <StyledForm>
                     <TextInput

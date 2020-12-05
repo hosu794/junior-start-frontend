@@ -20,7 +20,7 @@ export function oauth2(state = {}, action) {
                 loading: false,
                 loggedIn: false,
             }
-        case oauth2Constants.LOGOUT:
+        case oauth2Constants.SIGN_OUT:
             return {
                 ...state,
                 loggedIn: false
