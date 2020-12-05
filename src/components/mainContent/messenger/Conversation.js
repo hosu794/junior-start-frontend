@@ -4,7 +4,9 @@ import InputBase from "@material-ui/core/InputBase";
 import {IconButton} from "@material-ui/core";
 import SendIcon from '@material-ui/icons/Send';
 import Messages from "./Messages";
-import {ConversationLayout, Header} from "../../../styles/messengerStyles";
+import {ConversationLayout, Header, MobileOnly} from "../../../styles/messengerStyles";
+import RecentActorsIcon from '@material-ui/icons/RecentActors';
+import {Link} from "react-router-dom";
 
 const messagesDb = [
     {
@@ -69,6 +71,11 @@ class Conversation extends Component {
             <ConversationLayout id='conversation'>
                 <Header>
                     <h3>{contact.name}</h3>
+                    <MobileOnly>
+                        <IconButton size='small' component={Link} to='/wiadomosci/kontakty'>
+                            <RecentActorsIcon fontSize='large'/>
+                        </IconButton>
+                    </MobileOnly>
                 </Header>
                 <Messages messages={messages}/>
                 <Paper component='form' style={{display: 'flex'}}>

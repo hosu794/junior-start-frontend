@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import {colors} from "./colors";
 import {fonts} from "./fonts";
+import Box from "@material-ui/core/Box";
 
 export const NavbarLayout = styled.div`
   display: flex;
@@ -9,8 +10,11 @@ export const NavbarLayout = styled.div`
   background: ${colors.navbar};
 `
 
-export const LogoLayout = styled.div`
+export const LogoLayout = styled(Box)`
   font-size: 1.5em;
   font-weight: ${fonts.bold};
   font-style: italic;
+  flex-grow: 1;
+  text-decoration: none;
+  color: white;
 `

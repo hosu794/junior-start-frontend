@@ -47,8 +47,5 @@ const GlobalStyle = createGlobalStyle`
 const StyledWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  
-  @media only screen and (min-width: 768px) {
-    height: 100vh;
-  }
+  height: 100vh;
 `

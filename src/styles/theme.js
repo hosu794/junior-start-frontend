@@ -1,4 +1,5 @@
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
+import {colors} from "./colors";
 
 export const theme = createMuiTheme({
     palette: {
@@ -11,11 +12,11 @@ export const theme = createMuiTheme({
         divider: 'rgba(255, 255, 255, 0.12)',
     },
     typography: {
-        fontFamily: "Montserrat"
+        fontFamily: "Montserrat",
     },
     props: {
         MuiSvgIcon: {
-            htmlColor: 'rgba(255, 255, 255, 0.50)',
+            htmlColor: 'rgba(255, 255, 255)',
         }
     },
     overrides: {
@@ -36,6 +37,12 @@ export const theme = createMuiTheme({
         MuiFormLabel: {
             root: {
                 color: '#c4c4c4'
+            }
+        },
+        MuiAppBar: {
+            colorPrimary: {
+                color: 'white',
+                backgroundColor: colors.navbar
             }
         }
     }

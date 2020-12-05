@@ -8,7 +8,7 @@ export const MainContentLayout = styled.div`
   flex-direction: column;
   padding: 10px 10px;
   height: 100%;
-  width: 70%;
+  flex-grow: 1;
 `
 export const PaperLayout = styled(Paper)`
   display: flex;

@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React from 'react';
 import Layout from "./styles/Layout";
 import Navbar from "./components/navbar/Navbar";
-import LeftMenu from "./components/leftMenu/LeftMenu";
 import MainContent from "./components/mainContent/MainContent";
 import RightMenu from "./components/rightMenu/RightMenu";
 import Footer from "./components/footer/Footer";
@@ -33,8 +32,6 @@ function App() {
       <Layout>
         <Navbar />
         <ContentLayout>
-          <LeftMenu />
-          <Divider orientation="vertical" flexItem />
           <Switch>
             <Route path="/profile" component={() => <div>Profile</div>} exact />
             <Route exact component={MainContent} path="/" />
