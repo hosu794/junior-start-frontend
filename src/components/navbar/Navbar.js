@@ -1,45 +1,59 @@
-import React, {Component} from "react";
+import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
-import {LogoLayout, NavbarLayout} from "../../styles/navbarStyles";
+import { LogoLayout, NavbarLayout } from "../../styles/navbarStyles";
 import AuthModal from "../auth/AuthModal";
-import {CenteredModal} from "../../styles/modalStyles";
+import { CenteredModal } from "../../styles/modalStyles";
+import { useDispatch, useSelector } from "react-redux";
+import PropTypes from "prop-types";
+import { authenticationActions } from "../../actions";
+import { currrentUserSelector } from "../../selectors";
 
-class Navbar extends Component {
-    constructor(props) {
-        super(props);
+const Navbar = () => {
+  const [modal, setModal] = useState(false);
 
-        this.state = {
-            showAuthModal: false
-        }
-    }
+  const user = useSelector(currrentUserSelector);
+  const dispatch = useDispatch();
 
-    updateShowAuthModal = () => {
-        this.setState({
-            showAuthModal: !this.state.showAuthModal
-        })
-    }
+  function updateShowAuthModal() {
+    setModal(!modal);
+  }
 
-    render() {
-        return (
-            <NavbarLayout>
-                <LogoLayout>Junior start</LogoLayout>
-                <Button
-                    variant="outlined"
-                    color="primary"
-                    onClick={this.updateShowAuthModal}
-                >
-                    Zaloguj
-                </Button>
+  function logout() {
+    dispatch(authenticationActions.logout());
+    dispatch(authenticationActions.logoutAuth02token());
+  }
 
-                <CenteredModal
-                    open={this.state.showAuthModal}
-                    onClose={this.updateShowAuthModal}
-                >
-                    <AuthModal/>
-                </CenteredModal>
-            </NavbarLayout>
-        );
-    }
-}
+  return (
+    <NavbarLayout>
+      <LogoLayout>Junior start</LogoLayout>
+      {!user ? (
+        <Button
+          variant="outlined"
+          color="primary"
+          onClick={updateShowAuthModal}
+        >
+          Zaloguj
+        </Button>
+      ) : (
+        <div>
+          <Button variant="outlined" color="primary">
+            {user.email}
+          </Button>
+          <Button variant="contained" onClick={logout} color="primary">
+            Wyloguj się
+          </Button>
+        </div>
+      )}
+
+      <CenteredModal open={modal} onClose={updateShowAuthModal}>
+        <AuthModal />
+      </CenteredModal>
+    </NavbarLayout>
+  );
+};
+
+Navbar.propTypes = {
+  user: PropTypes.object,
+};
 
 export default Navbar;
