@@ -6,9 +6,9 @@ import InputBase from "@material-ui/core/InputBase";
 export const MainContentLayout = styled.div`
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
-  margin: 10px 0 10px 0;
-  padding: 0 10px;
+  padding: 10px 10px;
+  height: 100%;
+  width: 70%;
 `
 export const PaperLayout = styled(Paper)`
   display: flex;
