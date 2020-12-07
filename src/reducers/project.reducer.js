@@ -17,11 +17,12 @@ export function project(state = intialState, action) {
         loading: true,
       };
     case projectConstants.GET_ALL_PROJECT_SUCCESS:
+      console.log(action.payload.content);
       return {
         ...state,
         loading: false,
         page: action.payload.page,
-        projects: state.projects.push(action.payload.content),
+        projects: state.projects.concat(action.payload.content),
         size: action.payload.size,
         totalElement: action.payload.totalElement,
         last: action.payload.last,

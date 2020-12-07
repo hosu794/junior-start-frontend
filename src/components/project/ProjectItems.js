@@ -2,24 +2,31 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { projectActions } from "../../actions";
 import {
-  projectSizeSelector,
+  projectPageSelector,
   projectsSelector,
 } from "../../selectors/project.selectors";
 
 const ProjectItems = () => {
-  const page = useSelector(projectSizeSelector);
+  const page = useSelector(projectPageSelector);
   const content = useSelector(projectsSelector);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(projectActions.findAll(page));
-  }, [content, dispatch, page]);
+  }, [dispatch, page]);
 
   return (
     <div>
       <h1>Projects</h1>
-      {content ? content.map((i) => i.title) : null}
+      {content
+        ? content.map((i) => (
+            <React.Fragment>
+              <h1>{i.title}</h1>
+              <p>Body: {i.body}</p>
+            </React.Fragment>
+          ))
+        : null}
     </div>
   );
 };

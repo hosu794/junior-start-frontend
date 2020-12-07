@@ -26,15 +26,15 @@ function findAll(page, service = projectService.findAll) {
   };
 
   function request() {
-    return { type: projectConstants.CREATE_PROJECT_REQUEST };
+    return { type: projectConstants.GET_ALL_PROJECT_REQUEST };
   }
 
   function success(payload) {
-    return { type: projectConstants.CREATE_PROJECT_SUCCESS, payload };
+    return { type: projectConstants.GET_ALL_PROJECT_SUCCESS, payload };
   }
 
   function failure(error) {
-    return { type: projectConstants.CREATE_PROJECT_FAILURE, error };
+    return { type: projectConstants.GET_ALL_PROJECT_FAILURE, error };
   }
 }
 
