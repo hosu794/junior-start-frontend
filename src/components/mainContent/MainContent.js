@@ -6,6 +6,7 @@ import {
   MainContentLayout,
   PaperLayout,
 } from "../../styles/mainContentStyles";
+import ProjectItems from "../project/ProjectItems";
 
 const MainContent = () => (
   <MainContentLayout>
@@ -15,6 +16,7 @@ const MainContent = () => (
         <SearchIcon />
       </IconButton>
     </PaperLayout>
+    <ProjectItems />
   </MainContentLayout>
 );
 
