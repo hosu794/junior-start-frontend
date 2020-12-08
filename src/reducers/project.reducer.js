@@ -21,7 +21,7 @@ export function project(state = intialState, action) {
       return {
         ...state,
         loading: false,
-        page: action.payload.page,
+        page: state.page,
         projects: state.projects.concat(action.payload.content),
         size: action.payload.size,
         totalElement: action.payload.totalElement,
