@@ -1,11 +1,5 @@
 import debounce from "lodash.debounce";
-import React, {
-  Component,
-  Fragment,
-  useCallback,
-  useEffect,
-  useState,
-} from "react";
+import React, { Component, Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { projectActions } from "../../actions";
 
@@ -59,20 +53,16 @@ class ProjectItems extends Component {
         )
         .then((results) => {
           // Creates a massaged array of user data
-          console.log(results.body.content);
-          const nextUsers = results.body.content.map((user) => ({
+
+          const nextProjects = results.body.content.map((user) => ({
             title: user.title,
             description: user.description,
           }));
-          console.log(nextUsers);
-          // Merges the next users into our existing users
+
           this.setState({
-            // Note: Depending on the API you're using, this value may
-            // be returned as part of the payload to indicate that there
-            // is no additional data to be loaded
             hasMore: !results.body.last,
             isLoading: false,
-            users: [...this.state.users, ...nextUsers],
+            users: [...this.state.users, ...nextProjects],
             page: this.state.page + 1,
           });
 
@@ -94,13 +84,13 @@ class ProjectItems extends Component {
       <div>
         <h1>Infinite Users!</h1>
         <p>Scroll down to load more!!</p>
-        {users.map((user) => (
-          <Fragment key={user.username}>
+        {users.map((i) => (
+          <Fragment key={i.id}>
             <hr />
             <div style={{ display: "flex" }}>
               <div>
-                <h2 style={{ marginTop: 0 }}>@{user.title}</h2>
-                <p>Description: {user.description}</p>
+                <h2 style={{ marginTop: 0 }}>{i.title}</h2>
+                <p>Description: {i.description}</p>
               </div>
             </div>
           </Fragment>
