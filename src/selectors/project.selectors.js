@@ -5,3 +5,4 @@ export const projectTotalElementSelector = (state) =>
   state.project.totalElement;
 export const projectLastSelector = (state) => state.project.last;
 export const projectPageSelector = (state) => state.project.page;
+export const projectErrorSelector = (state) => state.project.error;
