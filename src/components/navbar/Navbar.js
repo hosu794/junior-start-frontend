@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import { authenticationActions } from "../../actions";
 import { currrentUserSelector } from "../../selectors";
-import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [modal, setModal] = useState(false);

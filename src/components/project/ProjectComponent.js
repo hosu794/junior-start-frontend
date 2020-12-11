@@ -1,11 +1,15 @@
 import React, { useCallback, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { projectActions } from "../../actions";
+import { projectCurrentItemSelector } from "../../selectors/project.selectors";
+import ProjectBackButton from "./ProjectBackButton";
 
 const ProjectComponent = () => {
   let { name } = useParams();
+
+  const project = useSelector(projectCurrentItemSelector);
 
   const dispatch = useDispatch();
 
@@ -20,7 +24,30 @@ const ProjectComponent = () => {
   return (
     <div>
       Project Component
-      <p>Id: {name ? name : "name not found"}</p>
+      {project ? (
+        <React.Fragment>
+          <h1>title: {project.title}</h1>
+          <p>Description: {project.description}</p>
+          <hr />
+          Project's Name: {project.name}
+          <hr />
+          <div dangerouslySetInnerHTML={{ __html: project.body }}></div>
+          <hr />
+          Number of Seats: {project.numberOfSeats}
+          <p>Recruting? {project.recruiting ? "Yes" : "Nope"}</p>
+          Team members:{" "}
+          {project.teamMembers
+            ? project.teamMembers.map((i) => <p>i.username</p>)
+            : "Nobody"}
+          <p>
+            Project's mentor:{" "}
+            {project.mentor ? project.mentor.username : "Nobody"}
+          </p>
+        </React.Fragment>
+      ) : (
+        "Loading"
+      )}
+      <ProjectBackButton title="Back to projects" />
     </div>
   );
 };
