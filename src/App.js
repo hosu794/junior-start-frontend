@@ -16,6 +16,7 @@ import PropTypes from "prop-types";
 import OAuth2RedirectHandler from "./components/oauth2/OAuth2RedirectHandler";
 import { loggedInSelector } from "./selectors";
 import ProjectComponent from "./components/project/ProjectComponent";
+import ProjectCreate from "./components/project/ProjectCreate";
 
 function App() {
   const loggedIn = useSelector(loggedInSelector);
@@ -40,7 +41,8 @@ function App() {
             <Route path="/profile" component={() => <div>Profile</div>} exact />
             <Route exact component={MainContent} path="/" />
             <Route path="/oauth2/redirect" component={OAuth2RedirectHandler} />
-            <Route path="/project/:name" component={ProjectComponent} />
+            <Route path="/project/:name" component={ProjectComponent} exact />
+            <Route path="/create/project" component={ProjectCreate} />
           </Switch>
           <Divider orientation="vertical" flexItem />
           <RightMenu />
