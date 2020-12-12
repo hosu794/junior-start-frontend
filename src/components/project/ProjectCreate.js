@@ -12,17 +12,20 @@ var ContentState = Draft.ContentState;
 
 const formikEnhancer = withFormik({
   mapPropsToValues: (props) => ({
-    editorState: EditorState.createWithContent(
-      ContentState.createFromText("Hello")
-    ),
+    editorState: EditorState.createWithContent(ContentState.createFromText("")),
     email: "",
+    name: "",
+    title: "",
+    description: "",
+    numberOfSeats: null,
+    repository: "",
+    recruiting: "",
   }),
   validationSchema: Yup.object().shape({
-    email: Yup.string().email("That's not an email").required("Required!"),
+    name: Yup.string().required("Required!"),
   }),
   handleSubmit: (values, { setSubmitting }) => {
     setTimeout(() => {
-      // you probably want to transform draftjs state to something else, but I'll leave that to you.
       alert(JSON.stringify(values, null, 2));
       setSubmitting(false);
     }, 1000);
@@ -44,21 +47,21 @@ const MyForm = ({
 }) => (
   <form onSubmit={handleSubmit}>
     <label htmlFor="email" style={{ display: "block" }}>
-      Email
+      Name
     </label>
     <input
-      id="email"
-      placeholder="Enter your email"
-      type="email"
-      value={values.email}
+      id="name"
+      placeholder="Enter your name"
+      type="text"
+      value={values.name}
       onChange={handleChange}
       onBlur={handleBlur}
     />
-    {errors.email && touched.email && (
-      <div style={{ color: "red", marginTop: ".5rem" }}>{errors.email}</div>
+    {errors.name && touched.name && (
+      <div style={{ color: "red", marginTop: ".5rem" }}>{errors.name}</div>
     )}
-    <label htmlFor="email" style={{ display: "block", marginTop: ".5rem" }}>
-      Story
+    <label htmlFor="name" style={{ display: "block", marginTop: ".5rem" }}>
+      Name
     </label>
     <RichEditorExample
       editorState={values.editorState}
@@ -81,27 +84,12 @@ const MyForm = ({
 
 const MyEnhancedForm = formikEnhancer(MyForm);
 
-const App = () => (
+const ProjectCreate = () => (
   <div className="app">
-    <h1>
-      Using{" "}
-      <a href="https://github.com/jaredpalmer/formik" target="_blank">
-        Formik
-      </a>{" "}
-      with{" "}
-      <a href="https://draftjs.org/" target="_blank">
-        Draft.js
-      </a>
-    </h1>
-    <p>
-      This example shows to use Formik with Facebook's Draft.js. The Rich Text
-      Editor is taken directly from the Draft.js examples directory. The trick
-      is to lift editor state up to Formik instead of in the input class
-      component and then use Formik's <code>setFieldValue</code> method to make
-      state changes.{" "}
-    </p>
+    <h1>Create a new project</h1>
+    <p>This is subsite for creating projects</p>
     <MyEnhancedForm user={{ email: "hello@reason.nyc" }} />
   </div>
 );
 
-export default App;
+export default ProjectCreate;
