@@ -1,20 +1,20 @@
-import React, { useEffect } from "react";
+import React, {useEffect} from 'react';
 import Layout from "./styles/Layout";
 import Navbar from "./components/navbar/Navbar";
-import LeftMenu from "./components/leftMenu/LeftMenu";
 import MainContent from "./components/mainContent/MainContent";
 import RightMenu from "./components/rightMenu/RightMenu";
 import Footer from "./components/footer/Footer";
 import Divider from "@material-ui/core/Divider";
-import { ContentLayout } from "./styles/contentStyles";
-import { history } from "./utils";
-import { useDispatch, useSelector } from "react-redux";
-import { userActions, alertActions } from "./actions";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {ContentLayout} from "./styles/contentStyles";
+import {history} from "./utils";
+import {useDispatch, useSelector} from "react-redux";
+import {alertActions, userActions} from "./actions";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 import PropTypes from "prop-types";
 import OAuth2RedirectHandler from "./components/oauth2/OAuth2RedirectHandler";
-import { loggedInSelector } from "./selectors";
+import {loggedInSelector} from "./selectors";
+import MessengerPage from "./components/mainContent/messenger/MessengerPage";
 
 function App() {
   const loggedIn = useSelector(loggedInSelector);
@@ -33,15 +33,14 @@ function App() {
       <Layout>
         <Navbar />
         <ContentLayout>
-          <LeftMenu />
-          <Divider orientation="vertical" flexItem />
           <Switch>
             <Route path="/profile" component={() => <div>Profile</div>} exact />
-            <Route exact component={MainContent} path="/" />
+            <Route exact component={MainContent} path="/"/>
+            <Route exact component={MessengerPage} path="/wiadomosci"/>
             <Route
-              path="/oauth2/redirect"
-              component={OAuth2RedirectHandler}
-            ></Route>
+                path="/oauth2/redirect"
+                component={OAuth2RedirectHandler}
+            />
           </Switch>
           <Divider orientation="vertical" flexItem />
           <RightMenu />

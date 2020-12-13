@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Contacts from "./Contacts";
 import Conversation from "./Conversation";
 import {Divider} from "@material-ui/core";
-import {MessengerPageLayout} from "../../../styles/messengerStyles";
+import {DesktopOnly, MessengerPageLayout} from "../../../styles/messengerStyles";
 
 
 class MessengerPage extends Component {
@@ -22,8 +22,10 @@ class MessengerPage extends Component {
         return (
             isComponentReady &&
             <MessengerPageLayout id='messenger-page'>
-                <Contacts/>
-                <Divider orientation="vertical" flexItem/>
+                <DesktopOnly>
+                    <Contacts/>
+                    <Divider orientation="vertical" flexItem/>
+                </DesktopOnly>
                 <Conversation contact={demoContact}/>
             </MessengerPageLayout>
         );
