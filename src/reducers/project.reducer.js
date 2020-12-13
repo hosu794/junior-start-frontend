@@ -3,6 +3,7 @@ import { projectConstants } from "../constants";
 const intialState = {
   projects: [],
   loading: false,
+  saved: false,
   size: 0,
   totalElement: 0,
   last: false,
@@ -61,6 +62,17 @@ export function project(state = intialState, action) {
         ...state,
         loading: false,
         currentItem: action.payload,
+      };
+    case projectConstants.CREATE_PROJECT_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case projectConstants.CREATE_PROJECT_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        saved: true,
       };
     default:
       return state;

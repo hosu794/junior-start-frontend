@@ -5,7 +5,6 @@ import { withFormik } from "formik";
 import { createProjectValidationSchema } from "../../utils/validation";
 
 import { RichEditorExample } from "../editor/";
-import * as Yup from "yup";
 import Draft from "draft-js";
 
 var EditorState = Draft.EditorState;

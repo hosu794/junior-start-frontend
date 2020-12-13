@@ -42,7 +42,7 @@ const ProjectInfinityScroll = () => {
 
   return (
     <div>
-      <h1>Infinite Users!</h1>
+      <h1>Projects</h1>
       <p>Scroll down to load more!!</p>
       {projects.map((i) => (
         <Fragment key={i.id}>
