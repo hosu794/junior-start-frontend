@@ -1,11 +1,12 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
 import { MenuLayout } from "../../styles/menuStyles";
+import { Link } from "react-router-dom";
 
 const RightMenu = () => (
   <MenuLayout>
     <Button variant="outlined" color="primary">
-      Stwórz projekt
+      <Link to="/create/project"> Stwórz projekt</Link>
     </Button>
     <Button variant="outlined" color="primary">
       Dodaj kod
