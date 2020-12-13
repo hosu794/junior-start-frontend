@@ -8,6 +8,7 @@ const intialState = {
   totalElement: 0,
   last: false,
   page: 0,
+  created: false,
 };
 
 export function project(state = intialState, action) {
@@ -67,6 +68,7 @@ export function project(state = intialState, action) {
       return {
         ...state,
         loading: true,
+        created: true,
       };
     case projectConstants.CREATE_PROJECT_SUCCESS:
       return {

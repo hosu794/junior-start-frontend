@@ -42,9 +42,9 @@ function saveProject(project, service = projectService.saveProject) {
   return (dispatch) => {
     dispatch(request());
 
-    return service(request).then(
+    return service(project).then(
       (response) => {
-        dispatch(success(project.data));
+        dispatch(success(response.data));
       },
       (error) => {
         handleError(dispatch, error, failure);

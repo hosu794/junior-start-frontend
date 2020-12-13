@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../editor/formik-demo.css";
 import "../editor/rich-editor.css";
 import { useFormik } from "formik";
@@ -6,19 +6,39 @@ import { createProjectValidationSchema } from "../../utils/validation";
 
 import { RichEditorExample } from "../editor/";
 import { ContentState, EditorState } from "draft-js";
+import { useDispatch, useSelector } from "react-redux";
+import { projectActions } from "../../actions/project.actions";
+import { projectCreatedSelector } from "../../selectors/project.selectors";
 
-const MyForm = ({
-  values,
-  touched,
-  dirty,
-  errors,
-  handleChange,
-  handleBlur,
-  handleSubmit,
-  handleReset,
-  setFieldValue,
-  isSubmitting,
-}) => {
+const MyForm = () => {
+  const loading = useSelector(projectCreatedSelector);
+
+  useEffect(() => {}, [loading]);
+
+  const dispatch = useDispatch();
+
+  const saveProject = (
+    name,
+    title,
+    description,
+    numberOfSeats,
+    repository,
+    recruiting,
+    body
+  ) => {
+    const request = {
+      name,
+      title,
+      description,
+      numberOfSeats,
+      repository,
+      recruiting,
+      body,
+    };
+
+    dispatch(projectActions.saveProject(request));
+  };
+
   const formik = useFormik({
     initialValues: {
       editorState: EditorState.createWithContent(
@@ -33,8 +53,16 @@ const MyForm = ({
     },
     validationSchema: createProjectValidationSchema,
     onSubmit: (values) => {
-      console.log(values);
       alert(JSON.stringify(values, null, 2));
+      saveProject(
+        values.name,
+        values.title,
+        values.description,
+        values.numberOfSeats,
+        values.repository,
+        values.recruiting,
+        values.editorState.getCurrentContent().getPlainText("\u0001")
+      );
     },
   });
 

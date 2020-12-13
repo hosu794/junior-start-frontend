@@ -16,9 +16,9 @@ function findAll(page) {
 }
 
 function saveProject(project) {
-  const body = JSON.stringify(project);
+  // const body = JSON.stringify(project);
 
-  return axios.post(`${apiConstants.API_ENDOINT}/api/project`, body, {
+  return axios.post(`${apiConstants.API_ENDOINT}/api/project`, project, {
     headers: authHeader(),
   });
 }
