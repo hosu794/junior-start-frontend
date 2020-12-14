@@ -31,7 +31,7 @@ function App() {
   }, [dispatch, loggedIn]);
 
   return (
-    <Router>
+    <Router history={history}>
       <Layout>
         <Navbar />
         <ContentLayout>

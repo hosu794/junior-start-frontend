@@ -11,33 +11,6 @@ export const projectActions = {
   getByName,
 };
 
-function findAll(page, service = projectService.findAll) {
-  return (dispatch) => {
-    dispatch(request());
-
-    return service(page).then(
-      (response) => {
-        dispatch(success(response.data));
-      },
-      (error) => {
-        handleError(dispatch, error, failure);
-      }
-    );
-  };
-
-  function request() {
-    return { type: projectConstants.GET_ALL_PROJECT_REQUEST };
-  }
-
-  function success(payload) {
-    return { type: projectConstants.GET_ALL_PROJECT_SUCCESS, payload };
-  }
-
-  function failure(error) {
-    return { type: projectConstants.GET_ALL_PROJECT_FAILURE, error };
-  }
-}
-
 function saveProject(project, service = projectService.saveProject) {
   return (dispatch) => {
     dispatch(request());
@@ -62,6 +35,33 @@ function saveProject(project, service = projectService.saveProject) {
 
   function failure(error) {
     return { type: projectConstants.CREATE_PROJECT_FAILURE, error };
+  }
+}
+
+function findAll(page, service = projectService.findAll) {
+  return (dispatch) => {
+    dispatch(request());
+
+    return service(page).then(
+      (response) => {
+        dispatch(success(response.data));
+      },
+      (error) => {
+        handleError(dispatch, error, failure);
+      }
+    );
+  };
+
+  function request() {
+    return { type: projectConstants.GET_ALL_PROJECT_REQUEST };
+  }
+
+  function success(payload) {
+    return { type: projectConstants.GET_ALL_PROJECT_SUCCESS, payload };
+  }
+
+  function failure(error) {
+    return { type: projectConstants.GET_ALL_PROJECT_FAILURE, error };
   }
 }
 

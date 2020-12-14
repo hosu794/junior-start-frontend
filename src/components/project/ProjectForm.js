@@ -3,7 +3,7 @@ import "../editor/formik-demo.css";
 import "../editor/rich-editor.css";
 import { useFormik } from "formik";
 import { createProjectValidationSchema } from "../../utils/validation";
-
+import { useHistory } from "react-router-dom";
 import { RichEditorExample } from "../editor/";
 import { ContentState, EditorState } from "draft-js";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,12 +12,12 @@ import { projectCreatedSelector } from "../../selectors/project.selectors";
 
 const MyForm = () => {
   const loading = useSelector(projectCreatedSelector);
-
+  let history = useHistory();
   useEffect(() => {}, [loading]);
 
   const dispatch = useDispatch();
 
-  const saveProject = (
+  const saveProject = async (
     name,
     title,
     description,
@@ -36,7 +36,8 @@ const MyForm = () => {
       body,
     };
 
-    dispatch(projectActions.saveProject(request));
+    await dispatch(projectActions.saveProject(request));
+    await history.push("/");
   };
 
   const formik = useFormik({
