@@ -9,18 +9,20 @@ import { loginValidationSchema } from "../../utils/validation";
 import { LoginFailureAlertStyles } from "../../styles/alertStyles";
 import OAuth2Signin from "../../components/oauth2/OAuth2Signin";
 import { authenticationErrorSelector } from "../../selectors";
+import { useHistory } from "react-router-dom";
 
 const SignInForm = () => {
   const dispatch = useDispatch();
   const authenticationError = useSelector(authenticationErrorSelector);
-
+  const history = useHistory();
   useEffect(() => {
     dispatch(authenticationActions.clearError());
   }, [dispatch]);
 
-  function signIn(email, password) {
-    dispatch(authenticationActions.signIn({ email, password }));
-  }
+  const signIn = async (email, password) => {
+    await dispatch(authenticationActions.signIn({ email, password }));
+    await history.go(0);
+  };
 
   return (
     <StyledAuthForm>

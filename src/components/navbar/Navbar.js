@@ -7,10 +7,10 @@ import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import { authenticationActions } from "../../actions";
 import { currrentUserSelector } from "../../selectors";
-
+import { useHistory } from "react-router-dom";
 const Navbar = () => {
   const [modal, setModal] = useState(false);
-
+  const history = useHistory();
   const user = useSelector(currrentUserSelector);
   const dispatch = useDispatch();
 
@@ -18,10 +18,11 @@ const Navbar = () => {
     setModal(!modal);
   }
 
-  function logout() {
-    dispatch(authenticationActions.logout());
-    dispatch(authenticationActions.logoutAuth02token());
-  }
+  const logout = async () => {
+    await dispatch(authenticationActions.logout());
+    await dispatch(authenticationActions.logoutAuth02token());
+    history.go(0);
+  };
 
   return (
     <NavbarLayout>

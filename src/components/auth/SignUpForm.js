@@ -7,13 +7,15 @@ import { registerValidationSchema } from "../../utils/validation";
 import { useDispatch } from "react-redux";
 import { authenticationActions } from "../../actions";
 import OAuth2Signup from "../oauth2/OAuth2Signup";
+import { useHistory } from "react-router-dom";
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
-
-  function signUp(username, email, password) {
-    dispatch(authenticationActions.signUp({ username, email, password }));
-  }
+  const history = useHistory();
+  const signUp = async (username, email, password) => {
+    await dispatch(authenticationActions.signUp({ username, email, password }));
+    await history.go(0);
+  };
 
   return (
     <StyledAuthForm id="form">

@@ -19,8 +19,6 @@ function signIn({ email, password }, service = authenticationService.signIn) {
     return service({ email, password }).then(
       (user) => {
         dispatch(success(user));
-        history.push("/");
-        window.location.reload(true);
       },
       (error) => {
         handleResponse(error);
@@ -45,7 +43,7 @@ function signIn({ email, password }, service = authenticationService.signIn) {
 
 function logout(service = authenticationService.singOut) {
   service();
-  window.location.reload(true);
+
   return {
     type: authenticationConstants.SIGN_OUT,
   };
@@ -53,7 +51,7 @@ function logout(service = authenticationService.singOut) {
 
 function logoutAuth02token(service = authenticationService.logoutAuth02token) {
   service();
-  window.location.reload(true);
+
   return {
     type: authenticationConstants.SIGN_OUT,
   };
