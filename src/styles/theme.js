@@ -23,7 +23,8 @@ export const theme = createMuiTheme({
         MuiPaper: {
             root: {
                 color: 'white',
-                padding: '1em'
+                display: "flex",
+                outline: "none"
             },
         },
         MuiInputBase: {
@@ -43,6 +44,12 @@ export const theme = createMuiTheme({
             colorPrimary: {
                 color: 'white',
                 backgroundColor: colors.navbar
+            }
+        },
+        MuiLink: {
+            button: {
+                font: "inherit",
+                verticalAlign: "inherit"
             }
         }
     }

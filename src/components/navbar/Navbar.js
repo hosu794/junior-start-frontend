@@ -20,6 +20,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import Badge from "@material-ui/core/Badge";
 import {Link} from "react-router-dom";
+import Box from "@material-ui/core/Box";
 
 const Navbar = () => {
     const [modal, setModal] = useState(false);
@@ -49,37 +50,32 @@ const Navbar = () => {
                         <MenuIcon/>
                     </IconButton>
                     <LogoLayout component={Link} to='/'>Junior start</LogoLayout>
-                    {
-                        !user ?
-                            <Button
-                                variant="outlined"
-                                color="primary"
-                                onClick={handleModal}
-                            >
-                                Zaloguj
-                            </Button>
-                            :
-                            <div>
-                                <IconButton component={Link} to='/wiadomosci' color='primary'>
-                                    <Badge badgeContent={4} color="primary">
-                                        <MailIcon/>
-                                    </Badge>
-                                </IconButton>
-                                <Button variant="outlined" color="primary">
-                                    {user.email}
+                    <Box mr={1}>
+                        {
+                            !user ?
+                                <Button
+                                    variant="outlined"
+                                    color="primary"
+                                    onClick={handleModal}
+                                >
+                                    Zaloguj
                                 </Button>
-                                <Button variant="contained" onClick={logout} color="primary">
-                                    Wyloguj się
-                                </Button>
-                            </div>
-                    }
-
-                    <CenteredModal
-                        open={modal}
-                        onClose={handleModal}
-                    >
-                        <AuthModal/>
-                    </CenteredModal>
+                                :
+                                <div>
+                                    <IconButton component={Link} to='/wiadomosci' color='primary'>
+                                        <Badge badgeContent={4} color="primary">
+                                            <MailIcon/>
+                                        </Badge>
+                                    </IconButton>
+                                    <Button variant="outlined" color="primary">
+                                        {user.email}
+                                    </Button>
+                                    <Button variant="contained" onClick={logout} color="primary">
+                                        Wyloguj się
+                                    </Button>
+                                </div>
+                        }
+                    </Box>
                 </Toolbar>
             </AppBar>
             <Drawer anchor='left' open={drawer} onClose={handleDrawer}>
@@ -97,6 +93,12 @@ const Navbar = () => {
                     ))}
                 </List>
             </Drawer>
+            <CenteredModal
+                open={modal}
+                onClose={handleModal}
+            >
+                <AuthModal/>
+            </CenteredModal>
         </>
     );
 }

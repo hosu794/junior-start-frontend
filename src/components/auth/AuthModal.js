@@ -1,15 +1,61 @@
-import React from "react";
+import React, {useState} from "react";
 import SignInForm from "./SignInForm";
-import { Divider } from "@material-ui/core";
+import {Grid, Link} from "@material-ui/core";
 import SignUpForm from "./SignUpForm";
-import { CustomPaper } from "../../styles/paperStyles";
+import Box from "@material-ui/core/Box";
+import Typography from "@material-ui/core/Typography";
+import Paper from "@material-ui/core/Paper";
 
-const AuthModal = () => (
-  <CustomPaper tabIndex={-1}>
-    <SignInForm />
-    <Divider orientation="vertical" flexItem />
-    <SignUpForm />
-  </CustomPaper>
-);
+const AuthModal = () => {
+
+    const [formType, setFormType] = useState('signIn');
+
+    const handleFormType = (type) => {
+        setFormType(type);
+    }
+
+    return (
+        <Paper tabIndex={-1}>
+            <Box p={2}>
+                {
+                    formType === 'signIn' ?
+                        <Grid container direction='column' spacing={1}>
+                            <SignInForm/>
+                            <Grid item container direction='row'>
+                                <Box mr={1}>
+                                    <Typography variant='body2'>
+                                        Nie masz jeszcze konta?
+                                    </Typography>
+                                </Box>
+                                <Typography variant='body2'>
+                                    <Link component={"button"} onClick={() => handleFormType('signUp')}>
+                                        Zarejestruj się
+                                    </Link>
+                                </Typography>
+                            </Grid>
+                        </Grid>
+                        :
+                        <Grid container direction='column' spacing={1}>
+                            <Grid item>
+                                <SignUpForm/>
+                            </Grid>
+                            <Grid item container direction='row'>
+                                <Box mr={1}>
+                                    <Typography variant='body2'>
+                                        Masz już konto?
+                                    </Typography>
+                                </Box>
+                                <Typography variant='body2'>
+                                    <Link component={"button"} onClick={() => handleFormType('signIn')}>
+                                        Zaloguj się
+                                    </Link>
+                                </Typography>
+                            </Grid>
+                        </Grid>
+                }
+            </Box>
+        </Paper>
+    );
+};
 
 export default AuthModal;
