@@ -1,8 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
 import ProjectLinkButton from "./ProjectLinkButton";
+import ProjectDeleteButton from "./ProjectDeleteButton";
 
-const ProjectItem = ({ id, name, title, description, creator }) => {
+const ProjectItem = ({
+  id,
+  name,
+  title,
+  description,
+  creator,
+  currentUser,
+}) => {
+  const isSameEmailAndNotNullCurrentUser =
+    currentUser && currentUser.email === creator.email;
+
   return (
     <div>
       <h1>Name: {name}</h1>
@@ -10,6 +21,9 @@ const ProjectItem = ({ id, name, title, description, creator }) => {
       <p>Description: {description}</p>
       Created by: {creator ? creator.email : "Annonymous"}
       <ProjectLinkButton name={name} />
+      {isSameEmailAndNotNullCurrentUser ? (
+        <ProjectDeleteButton id={id} />
+      ) : null}
     </div>
   );
 };

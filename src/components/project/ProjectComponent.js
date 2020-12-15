@@ -37,12 +37,14 @@ const ProjectComponent = () => {
           <p>Recruting? {project.recruiting ? "Yes" : "Nope"}</p>
           Team members:{" "}
           {project.teamMembers
-            ? project.teamMembers.map((i) => <p>i.username</p>)
+            ? project.teamMembers.map((i) => <p>{i.email}</p>)
             : "Nobody"}
           <p>
             Project's mentor:{" "}
             {project.mentor ? project.mentor.username : "Nobody"}
           </p>
+          <hr />
+          <h2>Creator: {project.creator.email}</h2>
         </React.Fragment>
       ) : (
         "Loading"

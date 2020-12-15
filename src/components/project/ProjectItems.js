@@ -5,6 +5,7 @@ import { projectActions } from "../../actions";
 import PropTypes from "prop-types";
 
 import {
+  currrentUserSelector,
   projectErrorSelector,
   projectLastSelector,
   projectLoadingSelector,
@@ -20,6 +21,7 @@ const ProjectInfinityScroll = () => {
   const isLoading = useSelector(projectLoadingSelector);
   const hasMore = useSelector(projectLastSelector);
   const page = useSelector(projectPageSelector);
+  const currentLoggedUser = useSelector(currrentUserSelector);
 
   const dispatch = useDispatch();
 
@@ -49,6 +51,7 @@ const ProjectInfinityScroll = () => {
           <hr />
           <div style={{ display: "flex" }}>
             <ProjectItem
+              currentUser={currentLoggedUser}
               title={i.title}
               key={i.id}
               creator={i.creator}
