@@ -8,7 +8,7 @@ const ProjectItem = ({ id, name, title, description, creator }) => {
       <h1>Name: {name}</h1>
       <h2>Title: {title}</h2>
       <p>Description: {description}</p>
-      Created by: {creator ? creator : "Annonymous"}
+      Created by: {creator ? creator.email : "Annonymous"}
       <ProjectLinkButton name={name} />
     </div>
   );
