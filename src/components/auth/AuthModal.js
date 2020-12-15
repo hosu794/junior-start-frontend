@@ -19,9 +19,11 @@ const AuthModal = () => {
             <Box p={2}>
                 {
                     formType === 'signIn' ?
-                        <Grid container direction='column' spacing={1}>
-                            <SignInForm/>
-                            <Grid item container direction='row'>
+                        <Grid container direction='column' spacing={2}>
+                            <Grid item>
+                                <SignInForm/>
+                            </Grid>
+                            <Grid item container direction='row' justify={"center"}>
                                 <Box mr={1}>
                                     <Typography variant='body2'>
                                         Nie masz jeszcze konta?
@@ -35,11 +37,11 @@ const AuthModal = () => {
                             </Grid>
                         </Grid>
                         :
-                        <Grid container direction='column' spacing={1}>
+                        <Grid container direction='column' spacing={2}>
                             <Grid item>
                                 <SignUpForm/>
                             </Grid>
-                            <Grid item container direction='row'>
+                            <Grid item container direction='row' justify={"center"}>
                                 <Box mr={1}>
                                     <Typography variant='body2'>
                                         Masz już konto?

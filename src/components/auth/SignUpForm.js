@@ -5,10 +5,10 @@ import {CustomCheckboxWithLabel, TextInput} from "../common";
 import {registerValidationSchema} from "../../utils/validation";
 import {useDispatch} from "react-redux";
 import {authenticationActions} from "../../actions";
-import OAuth2Signup from "../oauth2/OAuth2Signup";
 import Grid from "@material-ui/core/Grid";
 import {Divider, Typography} from "@material-ui/core";
-import Box from "@material-ui/core/Box";
+import ReCAPTCHA from "react-google-recaptcha";
+import OAuth2Signin from "../oauth2/OAuth2Signin";
 
 const SignUpForm = () => {
     const dispatch = useDispatch();
@@ -18,29 +18,30 @@ const SignUpForm = () => {
     }
 
     return (
-        <Box m={1} mt='10px'>
-            <Grid container direction='column' spacing={2}>
-                <Grid item>
-                    <Typography variant={"h6"}>Zarejestruj się</Typography>
-                </Grid>
-                <Grid item>
-                    <Divider/>
-                </Grid>
-                <Grid item>
-                    <Formik
-                        initialValues={{
-                            username: "",
-                            password: "",
-                            passwordConfirm: "",
-                            email: "",
-                            acceptedTerms: false,
-                        }}
-                        validationSchema={registerValidationSchema}
-                        onSubmit={(values, {setSubmitting}) => {
-                            signUp(values.username, values.email, values.password);
-                            setSubmitting(false);
-                        }}
-                    >
+        <Grid container direction='column' spacing={2}>
+            <Grid item>
+                <Typography variant={"h6"}>Zarejestruj się</Typography>
+            </Grid>
+            <Grid item>
+                <Divider/>
+            </Grid>
+            <Grid item>
+                <Formik
+                    initialValues={{
+                        username: "",
+                        password: "",
+                        passwordConfirm: "",
+                        email: "",
+                        acceptedTerms: false,
+                        recaptcha: ""
+                    }}
+                    validationSchema={registerValidationSchema}
+                    onSubmit={(values, {setSubmitting}) => {
+                        signUp(values.username, values.email, values.password);
+                        setSubmitting(false);
+                    }}
+                >
+                    {({setFieldValue, errors, touched}) => (
                         <Grid container direction={"column"} spacing={1}>
                             <Grid item container direction={"column"}>
                                 <TextInput
@@ -80,6 +81,22 @@ const SignUpForm = () => {
                                 label="Akceptuję regulamin"
                             />
                             <Grid item container direction={"column"}>
+                                <ReCAPTCHA
+                                    sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+                                    onChange={(response) => setFieldValue("recaptcha", response)}
+                                    theme="dark"
+                                />
+                                {errors.recaptcha && touched.recaptcha && (
+                                    <p
+                                        style={{
+                                            color: "red",
+                                        }}
+                                    >
+                                        {errors.recaptcha}
+                                    </p>
+                                )}
+                            </Grid>
+                            <Grid item container direction={"column"}>
                                 <Button type="submit" variant="contained" color="primary">
                                     Zarejestruj
                                 </Button>
@@ -88,13 +105,13 @@ const SignUpForm = () => {
                                 lub
                             </Grid>
                             <Grid item container justify={"center"}>
-                                <OAuth2Signup/>
+                                <OAuth2Signin/>
                             </Grid>
                         </Grid>
-                    </Formik>
-                </Grid>
+                    )}
+                </Formik>
             </Grid>
-        </Box>
+        </Grid>
     );
 };
 

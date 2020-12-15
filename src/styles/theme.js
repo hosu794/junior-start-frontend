@@ -51,6 +51,16 @@ export const theme = createMuiTheme({
                 font: "inherit",
                 verticalAlign: "inherit"
             }
+        },
+        MuiOutlinedInput: {
+            input: {
+                padding: "0.9em 0.6em"
+            }
+        },
+        MuiInputLabel: {
+            outlined: {
+                transform: "translate(15px, 17px) scale(1)"
+            }
         }
     }
 });
