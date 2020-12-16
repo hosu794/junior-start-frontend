@@ -5,11 +5,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { projectActions } from "../../actions";
 import { projectCurrentItemSelector } from "../../selectors/project.selectors";
 import ProjectBackButton from "./ProjectBackButton";
+import { currrentUserSelector } from "../../selectors";
+import ProjectDeleteButton from "./ProjectDeleteButton";
 
 const ProjectComponent = () => {
   let { name } = useParams();
 
   const project = useSelector(projectCurrentItemSelector);
+  const currentUser = useSelector(currrentUserSelector);
+
+  const isSameEmailAndNotNullCurrentUser =
+    currentUser && project && currentUser.email === project.creator.email;
 
   const dispatch = useDispatch();
 
@@ -50,6 +56,9 @@ const ProjectComponent = () => {
         "Loading"
       )}
       <ProjectBackButton title="Back to projects" />
+      {isSameEmailAndNotNullCurrentUser ? (
+        <ProjectDeleteButton reload={true} id={project.id} />
+      ) : null}
     </div>
   );
 };

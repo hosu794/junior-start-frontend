@@ -22,7 +22,7 @@ const ProjectItem = ({
       Created by: {creator ? creator.email : "Annonymous"}
       <ProjectLinkButton name={name} />
       {isSameEmailAndNotNullCurrentUser ? (
-        <ProjectDeleteButton id={id} />
+        <ProjectDeleteButton reload={false} id={id} />
       ) : null}
     </div>
   );
