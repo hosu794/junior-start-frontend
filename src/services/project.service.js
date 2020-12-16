@@ -16,8 +16,6 @@ function findAll(page) {
 }
 
 function saveProject(project) {
-  // const body = JSON.stringify(project);
-
   return axios.post(`${apiConstants.API_ENDOINT}/api/project`, project, {
     headers: authHeader(),
   });
@@ -32,7 +30,7 @@ function updateProject(updateRequest) {
 }
 
 function deleteProject(id) {
-  return axios.delete(`${apiConstants.API_ENDOINT}/api/project/{${id}}`, {
+  return axios.delete(`${apiConstants.API_ENDOINT}/api/project/${id}`, {
     headers: authHeader(),
   });
 }

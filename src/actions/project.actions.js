@@ -94,7 +94,7 @@ function updateProject(project, service = projectService.updateProject) {
 
 function deleteProject(id, service = projectService.deleteProject) {
   return (dispatch) => {
-    dispatch(request());
+    dispatch(request(id));
 
     return service(id).then(
       (response) => {
@@ -107,7 +107,7 @@ function deleteProject(id, service = projectService.deleteProject) {
   };
 
   function request() {
-    return { type: projectConstants.DELETE_PROJECT_REQUEST };
+    return { type: projectConstants.DELETE_PROJECT_REQUEST, payload: id };
   }
 
   function success(response) {

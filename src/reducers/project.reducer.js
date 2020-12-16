@@ -29,6 +29,7 @@ export function project(state = intialState, action) {
         last: !action.payload.last,
       };
     case projectConstants.DELETE_PROJECT_REQUEST:
+      console.log(action.payload);
       return {
         ...state,
         projects: state.projects.filter((v) => v.id !== action.payload),
