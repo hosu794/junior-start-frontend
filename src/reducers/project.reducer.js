@@ -76,6 +76,7 @@ export function project(state = intialState, action) {
         ...state,
         loading: false,
         saved: true,
+        projects: [...state.projects, action.payload],
       };
     default:
       return state;
