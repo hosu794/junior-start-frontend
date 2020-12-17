@@ -65,11 +65,11 @@ function findAll(page, service = projectService.findAll) {
   }
 }
 
-function updateProject(project, service = projectService.updateProject) {
+function updateProject(project, id, service = projectService.updateProject) {
   return (dispatch) => {
     dispatch(request());
 
-    return service(project).then(
+    return service(project, id).then(
       (response) => {
         dispatch(success(response.data));
       },

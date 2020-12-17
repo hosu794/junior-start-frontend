@@ -17,6 +17,8 @@ import OAuth2RedirectHandler from "./components/oauth2/OAuth2RedirectHandler";
 import { loggedInSelector } from "./selectors";
 import ProjectComponent from "./components/project/ProjectComponent";
 import ProjectCreate from "./components/project/ProjectCreate";
+import { PrivateRoute } from "./routes";
+import ProjectUpdate from "./components/project/ProjectUpdate";
 
 function App() {
   const loggedIn = useSelector(loggedInSelector);
@@ -42,7 +44,13 @@ function App() {
             <Route exact component={MainContent} path="/" />
             <Route path="/oauth2/redirect" component={OAuth2RedirectHandler} />
             <Route path="/project/:name" component={ProjectComponent} exact />
-            <Route path="/create/project" component={ProjectCreate} />
+            <PrivateRoute
+              path="/project/update/:name"
+              component={ProjectUpdate}
+              exact
+            />
+            />
+            <PrivateRoute path="/create/project" component={ProjectCreate} />
           </Switch>
           <Divider orientation="vertical" flexItem />
           <RightMenu />

@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import ProjectLinkButton from "./ProjectLinkButton";
 import ProjectDeleteButton from "./ProjectDeleteButton";
+import ProjectUpdateLinkButton from "./ProjectUpdateLinkButton";
 
 const ProjectItem = ({
   id,
@@ -23,6 +24,9 @@ const ProjectItem = ({
       <ProjectLinkButton name={name} />
       {isSameEmailAndNotNullCurrentUser ? (
         <ProjectDeleteButton reload={false} id={id} />
+      ) : null}
+      {isSameEmailAndNotNullCurrentUser ? (
+        <ProjectUpdateLinkButton name={name} />
       ) : null}
     </div>
   );

@@ -10,7 +10,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { projectActions } from "../../actions/project.actions";
 import { projectCreatedSelector } from "../../selectors/project.selectors";
 
-const MyForm = () => {
+const ProjectUpdateForm = ({
+  body,
+  name,
+  title,
+  description,
+  numberOfSeats,
+  recruiting,
+  id,
+  repository,
+}) => {
   const loading = useSelector(projectCreatedSelector);
   let history = useHistory();
   useEffect(() => {}, [loading]);
@@ -36,21 +45,23 @@ const MyForm = () => {
       body,
     };
 
-    await dispatch(projectActions.saveProject(request));
+    console.log(request, id);
+
+    await dispatch(projectActions.updateProject(id, request));
     await history.push("/");
   };
 
   const formik = useFormik({
     initialValues: {
       editorState: EditorState.createWithContent(
-        ContentState.createFromText("")
+        ContentState.createFromText(body)
       ),
-      name: "",
-      title: "",
-      description: "",
-      numberOfSeats: 1,
-      repository: "",
-      recruiting: false,
+      name: name,
+      title: title,
+      description: description,
+      numberOfSeats: numberOfSeats,
+      repository: repository,
+      recruiting: recruiting,
     },
     validationSchema: createProjectValidationSchema,
     onSubmit: (values) => {
@@ -189,10 +200,10 @@ const MyForm = () => {
         Reset
       </button>
       <button type="submit" disabled={formik.isSubmitting}>
-        Submit
+        Update
       </button>
     </form>
   );
 };
 
-export default MyForm;
+export default ProjectUpdateForm;

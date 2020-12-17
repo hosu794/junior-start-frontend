@@ -21,12 +21,18 @@ function saveProject(project) {
   });
 }
 
-function updateProject(updateRequest) {
-  const body = JSON.stringify(updateProject);
+function updateProject(updateRequest, id) {
+  // const body = JSON.stringify(updateRequest);
 
-  return axios.put(`${apiConstants.API_ENDOINT}/api/project`, body, {
-    headers: authHeader(),
-  });
+  console.log(updateRequest);
+
+  return axios.put(
+    `${apiConstants.API_ENDOINT}/api/project/${id}`,
+    updateRequest,
+    {
+      headers: authHeader(),
+    }
+  );
 }
 
 function deleteProject(id) {
