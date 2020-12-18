@@ -49,7 +49,7 @@ function App() {
               component={ProjectUpdate}
               exact
             />
-            />
+
             <PrivateRoute path="/create/project" component={ProjectCreate} />
           </Switch>
           <Divider orientation="vertical" flexItem />
