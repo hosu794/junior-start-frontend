@@ -3,6 +3,7 @@ import { apiConstants } from "../constants";
 import { authHeader } from "../utils/api/authHeader";
 
 export const projectService = {
+  findById,
   findAll,
   saveProject,
   updateProject,
@@ -22,10 +23,6 @@ function saveProject(project) {
 }
 
 function updateProject(updateRequest, id) {
-  // const body = JSON.stringify(updateRequest);
-
-  console.log(updateRequest);
-
   return axios.put(
     `${apiConstants.API_ENDOINT}/api/project/${id}`,
     updateRequest,
@@ -43,6 +40,10 @@ function deleteProject(id) {
 
 function findByTitle(title) {
   return axios.get(`${apiConstants.API_ENDOINT}/api/project/title/${title}`);
+}
+
+function findById(id) {
+  return axios.get(`${apiConstants.API_ENDOINT}/api/project/${id}`);
 }
 
 function findByName(name) {

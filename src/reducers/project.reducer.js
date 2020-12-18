@@ -29,7 +29,6 @@ export function project(state = intialState, action) {
         last: !action.payload.last,
       };
     case projectConstants.DELETE_PROJECT_REQUEST:
-      console.log(action.payload);
       return {
         ...state,
         projects: state.projects.filter((v) => v.id !== action.payload),
@@ -43,17 +42,16 @@ export function project(state = intialState, action) {
         loading: true,
       };
     case projectConstants.UPDATE_PROJECT_SUCCESS:
+      console.log(action.payload.id);
       return {
         ...state,
         loading: false,
-        projects: state.projects.map((i) =>
-          i.id === action.payload.id ? action.payload : i
-        ),
       };
     case projectConstants.GET_ALL_PROJECT_FAILURE:
     case projectConstants.CREATE_PROJECT_FAILURE:
     case projectConstants.DELETE_PROJECT_FAILURE:
     case projectConstants.GET_BY_TITLE_FAILURE:
+    case projectConstants.GET_BY_ID_FAILURE:
       return {
         ...state,
         loading: false,
@@ -77,6 +75,17 @@ export function project(state = intialState, action) {
         loading: false,
         saved: true,
         projects: [...state.projects, action.payload],
+      };
+    case projectConstants.GET_BY_ID_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case projectConstants.GET_BY_ID_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        currentItem: action.payload,
       };
     default:
       return state;

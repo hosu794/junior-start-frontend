@@ -45,9 +45,7 @@ const ProjectUpdateForm = ({
       body,
     };
 
-    console.log(request, id);
-
-    await dispatch(projectActions.updateProject(id, request));
+    await dispatch(projectActions.updateProject(request, id));
     await history.push("/");
   };
 

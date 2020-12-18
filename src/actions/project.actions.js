@@ -9,6 +9,7 @@ export const projectActions = {
   deleteProject,
   getByTitle,
   getByName,
+  findById,
 };
 
 function saveProject(project, service = projectService.saveProject) {
@@ -170,5 +171,32 @@ function getByName(name, service = projectService.findByName) {
 
   function failure(error) {
     return { type: projectConstants.GET_BY_NAME_FAILURE, error };
+  }
+}
+
+function findById(id, service = projectService.findById) {
+  return (dispatch) => {
+    dispatch(request());
+
+    return service(id).then(
+      (response) => {
+        dispatch(success(response.data));
+      },
+      (error) => {
+        handleError(dispatch, error, failure);
+      }
+    );
+  };
+
+  function request() {
+    return { type: projectConstants.GET_BY_ID_REQUEST };
+  }
+
+  function success(payload) {
+    return { type: projectConstants.GET_BY_ID_SUCCESS, payload };
+  }
+
+  function failure(error) {
+    return { type: projectConstants.GET_BY_ID_FAILURE, error };
   }
 }
