@@ -9,7 +9,7 @@ import { currrentUserSelector } from "../../selectors";
 import ProjectDeleteButton from "./ProjectDeleteButton";
 
 const ProjectComponent = () => {
-  let { name } = useParams();
+  let { id } = useParams();
 
   const project = useSelector(projectCurrentItemSelector);
   const currentUser = useSelector(currrentUserSelector);
@@ -20,8 +20,8 @@ const ProjectComponent = () => {
   const dispatch = useDispatch();
 
   const getProject = useCallback(() => {
-    dispatch(projectActions.getByName(name));
-  }, [dispatch, name]);
+    dispatch(projectActions.findById(id));
+  }, [dispatch, id]);
 
   useEffect(() => {
     getProject();

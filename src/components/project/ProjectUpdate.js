@@ -9,15 +9,15 @@ import {
 import ProjectUpdateForm from "./ProjectUpdateForm";
 
 const ProjectUpdate = () => {
-  let { name } = useParams();
+  let { id } = useParams();
 
   const project = useSelector(projectCurrentItemSelector);
   const dispatch = useDispatch();
   const currentUser = useSelector(currrentUserSelector);
 
   const getProject = useCallback(() => {
-    dispatch(projectActions.getByName(name));
-  }, [dispatch, name]);
+    dispatch(projectActions.findById(id));
+  }, [dispatch, id]);
 
   const isSameEmailAndNotNullCurrentUser =
     currentUser && project && currentUser.email === project.creator.email;

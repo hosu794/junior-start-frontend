@@ -43,9 +43,9 @@ function App() {
             <Route path="/profile" component={() => <div>Profile</div>} exact />
             <Route exact component={MainContent} path="/" />
             <Route path="/oauth2/redirect" component={OAuth2RedirectHandler} />
-            <Route path="/project/:name" component={ProjectComponent} exact />
+            <Route path="/project/:id" component={ProjectComponent} exact />
             <PrivateRoute
-              path="/project/update/:name"
+              path="/project/update/:id"
               component={ProjectUpdate}
               exact
             />

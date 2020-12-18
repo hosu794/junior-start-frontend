@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-const ProjectLinkButton = ({ name }) => {
-  const projectLink = `/project/${name}`;
+const ProjectLinkButton = ({ id }) => {
+  const projectLink = `/project/${id}`;
 
   return (
     <React.Fragment>
