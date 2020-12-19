@@ -1,6 +1,7 @@
 import { oauth2Constants } from "../constants";
 import { oauth2Service } from "../services";
 import { handleResponse } from "../utils/api";
+import { handleError } from "../utils/api/handleError";
 import { alertActions } from "./alert.actions";
 
 export const oauth2Actions = {
@@ -19,9 +20,7 @@ function login(token, service = oauth2Service.setToken) {
         window.location.reload(true);
       },
       (error) => {
-        handleResponse(error);
-        dispatch(failure(error.toString()));
-        dispatch(alertActions.error(error.toString()));
+       handleError(dispatch, error, failure)
       }
     );
   };

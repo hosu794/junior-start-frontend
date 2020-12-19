@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import Contact from "./Contact";
-import {ContactsLayout, ContactsTitle} from "../../../styles/messengerStyles";
+import {ContactsMobileLayout, ContactsTitle} from "../../../styles/messengerStyles";
 import RecentActorsIcon from '@material-ui/icons/RecentActors';
 import Box from "@material-ui/core/Box";
 
@@ -15,7 +15,7 @@ const contacts = [
     }
 ]
 
-class Contacts extends Component {
+class ContactsMobile extends Component {
 
     contacts = [];
 
@@ -40,9 +40,9 @@ class Contacts extends Component {
 
     render() {
         return (
-            <ContactsLayout id='contacts'>
+            <ContactsMobileLayout>
                 <ContactsTitle>
-                    <RecentActorsIcon/>
+                    <RecentActorsIcon fontSize='large'/>
                     <Box mx={1} my='auto'>
                         <h3>Kontakty</h3>
                     </Box>
@@ -52,9 +52,9 @@ class Contacts extends Component {
                         <Contact key={contact.id} name={contact.name}/>
                     ))
                 }
-            </ContactsLayout>
+            </ContactsMobileLayout>
         );
     }
 }
 
-export default Contacts;
+export default ContactsMobile;

@@ -11,6 +11,7 @@ function mapDispatchToProps(dispatch) {
 
 class OAuth2RedirectHandler extends Component {
   getUrlParameter(name) {
+    // eslint-disable-next-line no-useless-escape
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
 

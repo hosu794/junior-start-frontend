@@ -43,7 +43,6 @@ function signIn({ email, password }, service = authenticationService.signIn) {
 
 function logout(service = authenticationService.singOut) {
   service();
-
   return {
     type: authenticationConstants.SIGN_OUT,
   };
@@ -51,7 +50,6 @@ function logout(service = authenticationService.singOut) {
 
 function logoutAuth02token(service = authenticationService.logoutAuth02token) {
   service();
-
   return {
     type: authenticationConstants.SIGN_OUT,
   };
