@@ -1,8 +1,7 @@
 import { userConstants } from "../constants";
 import { userService } from "../services";
-import { alertActions } from "./alert.actions";
 
-import { handleResponse } from "../utils/api";
+import { handleError } from "../utils/api";
 
 export const userActions = {
   getCurrentUser,
@@ -19,9 +18,7 @@ function getCurrentUser(service = userService.loadUser) {
         dispatch(success(user.data));
       },
       (error) => {
-        handleResponse(error);
-        dispatch(failure(error.toString()));
-        dispatch(alertActions.error(error.toString()));
+        handleError(dispatch, error, failure);
       }
     );
   };
@@ -51,9 +48,7 @@ function checkUsernameAvailability(
         dispatch(success(response.data.available));
       },
       (error) => {
-        handleResponse(error);
-        dispatch(failure(error.response.data.message));
-        dispatch(alertActions.error(error.response.data.message));
+        handleError(dispatch, error, failure);
       }
     );
   };
@@ -83,9 +78,7 @@ function checkEmailAvailability(
         dispatch(success(response.data.available));
       },
       (error) => {
-        handleResponse(error);
-        dispatch(failure(error.response.data.message));
-        dispatch(alertActions.error(error.response.data.message));
+        handleError(dispatch, error, failure);
       }
     );
   };

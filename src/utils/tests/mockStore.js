@@ -7,10 +7,9 @@ const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
 
 const authentication = {
-    loggedIn: false
-}
+  loggedIn: false,
+};
 
 export let store = mockStore({
-    authentication
-})
-
+  authentication,
+});
