@@ -1,8 +1,7 @@
-import { handleResponse } from "../utils/api";
 import { authenticationService } from "../services";
-import { history } from "../utils";
 import { authenticationConstants } from "../constants";
 import { alertActions } from "./";
+import { handleError } from "../utils/api/handleError";
 
 export const authenticationActions = {
   logout,
@@ -21,9 +20,7 @@ function signIn({ email, password }, service = authenticationService.signIn) {
         dispatch(success(user));
       },
       (error) => {
-        handleResponse(error);
-        dispatch(failure(error.response.data.error));
-        dispatch(alertActions.error(error.response.data.error));
+        handleError(dispatch, error, failure);
       }
     );
   };
@@ -62,14 +59,10 @@ function signUp(user, service = authenticationService.signUp) {
     return service(user).then(
       (user) => {
         dispatch(success());
-        history.push("/login");
-        window.location.reload(true);
         dispatch(alertActions.success("Registration successful"));
       },
       (error) => {
-        handleResponse(error);
-        dispatch(failure(error.response.data.message));
-        dispatch(alertActions.error(error.response.data.message));
+        handleError(dispatch, error, failure);
       }
     );
   };
