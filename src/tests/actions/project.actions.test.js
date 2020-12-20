@@ -40,7 +40,6 @@ describe("Test for the project actions", () => {
       .dispatch(projectActions.findAll(0, mockServiceCreator(mockError, false)))
 
       .then(() => {
-        console.log(store.getActions());
         expect(store.getActions()).toContainEqual(
           {
             type: "GET_ALL_PROJECT_REQUEST",
@@ -175,7 +174,6 @@ describe("Test for the project actions", () => {
         projectActions.getByTitle("title", mockServiceCreator(mockProject))
       )
       .then(() => {
-        console.log(store.getActions());
         expect(store.getActions()).toContainEqual(
           { type: "GET_BY_TITLE_REQUEST" },
           { type: "GET_BY_TITLE_SUCCESS", payload: mockProject.data }

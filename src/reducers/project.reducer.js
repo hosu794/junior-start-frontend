@@ -35,14 +35,17 @@ export function project(state = intialState, action) {
         loading: true,
       };
     case projectConstants.GET_BY_TITLE_REQUEST:
-    case projectConstants.DELETE_PROJECT_SUCCESS:
     case projectConstants.UPDATE_PROJECT_REQUEST:
       return {
         ...state,
         loading: true,
       };
+    case projectConstants.DELETE_PROJECT_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+      };
     case projectConstants.UPDATE_PROJECT_SUCCESS:
-      console.log(action.payload);
       return {
         ...state,
         loading: false,
