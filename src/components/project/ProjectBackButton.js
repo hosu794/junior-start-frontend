@@ -1,23 +1,17 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 
-const ProjectBackButton = ({ title }) => {
-  let history = useHistory();
-
-  function handleBack() {
-    history.goBack();
-  }
-
+const ProjectBackButton = ({ title, onClick }) => {
   return (
     <React.Fragment>
-      <button onClick={handleBack}>{title}</button>
+      <button onClick={onClick}>{title}</button>
     </React.Fragment>
   );
 };
 
 ProjectBackButton.propTypes = {
   title: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
 };
 
 export default ProjectBackButton;

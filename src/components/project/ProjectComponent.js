@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import { projectActions } from "../../actions";
@@ -10,6 +10,12 @@ import ProjectDeleteButton from "./ProjectDeleteButton";
 
 const ProjectComponent = () => {
   let { id } = useParams();
+
+  let history = useHistory();
+
+  function handleBack() {
+    history.goBack();
+  }
 
   const project = useSelector(projectCurrentItemSelector);
   const currentUser = useSelector(currrentUserSelector);
@@ -35,7 +41,7 @@ const ProjectComponent = () => {
           <h1>title: {project.title}</h1>
           <p>Description: {project.description}</p>
           <hr />
-          Project's Name: {project.name}
+          <p>name: {project.name}</p>
           <hr />
           <div dangerouslySetInnerHTML={{ __html: project.body }}></div>
           <hr />
@@ -55,7 +61,7 @@ const ProjectComponent = () => {
       ) : (
         "Loading"
       )}
-      <ProjectBackButton title="Back to projects" />
+      <ProjectBackButton onClick={handleBack} title="Back to projects" />
       {isSameEmailAndNotNullCurrentUser ? (
         <ProjectDeleteButton reload={true} id={project.id} />
       ) : null}
