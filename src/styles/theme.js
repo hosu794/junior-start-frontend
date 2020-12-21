@@ -4,10 +4,10 @@ import {colors} from "./colors";
 export const theme = createMuiTheme({
     palette: {
         primary: {
-            main: '#90CAF9'
+            main: colors.primary
         },
         background: {
-            paper: '#424242'
+            paper: colors.navbar
         },
         divider: 'rgba(255, 255, 255, 0.12)',
     },
@@ -16,10 +16,15 @@ export const theme = createMuiTheme({
     },
     props: {
         MuiSvgIcon: {
-            htmlColor: 'rgba(255, 255, 255)',
+            htmlColor: 'inherit',
         }
     },
     overrides: {
+        MuiTypography: {
+            root: {
+                color: "white"
+            }
+        },
         MuiPaper: {
             root: {
                 color: 'white',
@@ -60,6 +65,39 @@ export const theme = createMuiTheme({
         MuiInputLabel: {
             outlined: {
                 transform: "translate(15px, 17px) scale(1)"
+            }
+        },
+        MuiButton: {
+            containedPrimary: {
+                color: "white",
+                backgroundColor: `${colors.darkgray}`,
+                "&:hover": {
+                    backgroundColor: "rgba(0,0,0, 0.4)"
+                }
+            }
+        },
+        MuiAlert: {
+            standardSuccess: {
+                color: "rgb(183, 223, 185)",
+                backgroundColor: "rgb(7, 17, 7)"
+            },
+            icon: {
+                color: "#4caf50"
+            }
+        },
+        MuiIcon: {
+            root: {
+                color: "inherit"
+            }
+        },
+        MuiIconButton: {
+            root: {
+                color: "inherit"
+            }
+        },
+        MuiListItemIcon: {
+            root: {
+                color: "inherit"
             }
         }
     }
