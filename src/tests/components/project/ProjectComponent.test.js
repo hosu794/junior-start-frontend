@@ -4,7 +4,7 @@ import configureStore from "redux-mock-store";
 import { Provider } from "react-redux";
 import { mockProjects } from "../../../utils/tests/mockProjects";
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { cleanup, render } from "@testing-library/react";
 
 const mockStore = configureStore([]);
 
@@ -53,23 +53,21 @@ const TestingComponent = () => (
 
 store.dispatch = jest.fn();
 
-describe("Test a ProjectComponent", () => {
-  let page;
+afterEach(cleanup);
 
-  beforeAll(() => {
-    page = render(<TestingComponent />);
+describe("Test a ProjectComponent", () => {
+  const { container, debug } = render(<TestingComponent />);
+
+  debug();
+  it("should render title correctly", () => {
+    expect(container.querySelector("h1").textContent).toMatch(
+      /title: random title/
+    );
   });
 
   it("should render title correctly", () => {
-    const titleValue = "title: random title";
-    const title = page.getByText(titleValue);
-    expect(title).toHaveTextContent(titleValue);
+    expect(container.querySelector("h2").textContent).toMatch(
+      /title: random title/
+    );
   });
-
-  //   it("should render description correctly", () => {
-  //     const descriptionValue = "Description: some random description";
-
-  //     const description = page.getByText(/Description: some random description/);
-  //     expect(description).toHaveTextContent(descriptionValue);
-  //   });
 });

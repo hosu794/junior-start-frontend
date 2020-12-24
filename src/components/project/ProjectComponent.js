@@ -7,6 +7,8 @@ import { projectCurrentItemSelector } from "../../selectors/project.selectors";
 import ProjectBackButton from "./ProjectBackButton";
 import { currrentUserSelector } from "../../selectors";
 import ProjectDeleteButton from "./ProjectDeleteButton";
+import ProjectCredentials from "./ProjectCredentials";
+import ProjectLoading from "./ProjectLoading";
 
 const ProjectComponent = () => {
   let { id } = useParams();
@@ -35,31 +37,23 @@ const ProjectComponent = () => {
 
   return (
     <div>
-      Project Component
       {project ? (
-        <React.Fragment>
-          <h1>title: {project.title}</h1>
-          <p>Description: {project.description}</p>
-          <hr />
-          <p>name: {project.name}</p>
-          <hr />
-          <div dangerouslySetInnerHTML={{ __html: project.body }}></div>
-          <hr />
-          Number of Seats: {project.numberOfSeats}
-          <p>Recruting? {project.recruiting ? "Yes" : "Nope"}</p>
-          Team members:{" "}
-          {project.teamMembers
-            ? project.teamMembers.map((i) => <p>{i.email}</p>)
-            : "Nobody"}
-          <p>
-            Project's mentor:{" "}
-            {project.mentor ? project.mentor.username : "Nobody"}
-          </p>
-          <hr />
-          <h2>Creator: {project.creator.email}</h2>
-        </React.Fragment>
+        <div>
+          <ProjectCredentials
+            id={project.id}
+            recruting={project.recruting}
+            key={project.id}
+            title={project.title}
+            description={project.description}
+            body={project.body}
+            numberOfSeats={project.numberOfSeats}
+            teamMembers={project.teamMembers}
+            mentor={project.mentor}
+            creator={project.creator}
+          />
+        </div>
       ) : (
-        "Loading"
+        <ProjectLoading />
       )}
       <ProjectBackButton onClick={handleBack} title="Back to projects" />
       {isSameEmailAndNotNullCurrentUser ? (
