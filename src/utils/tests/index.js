@@ -4,3 +4,4 @@ export * from "./mockError";
 export * from "./mockProjects";
 export * from "./mockProject";
 export * from "./projectContentResponse";
+export * from "./projectUpdatedContent";

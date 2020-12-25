@@ -18,7 +18,12 @@ const ProjectDeleteButton = ({ id, reload }) => {
 
   return (
     <React.Fragment>
-      <button onClick={reload ? onClickAndBack : onClick}>Delete</button>
+      <button
+        data-testid="project-delete-button"
+        onClick={reload ? onClickAndBack : onClick}
+      >
+        Delete
+      </button>
     </React.Fragment>
   );
 };

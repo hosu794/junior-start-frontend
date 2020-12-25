@@ -235,7 +235,7 @@ describe("project reducer", () => {
       })
     ).toEqual({
       ...stateWithProjects,
-      projects: [...projectUpdatedContent],
+      projects: [...projectUpdatedContent.projects],
     });
   });
 

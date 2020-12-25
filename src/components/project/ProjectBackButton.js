@@ -4,7 +4,9 @@ import PropTypes from "prop-types";
 const ProjectBackButton = ({ title, onClick }) => {
   return (
     <React.Fragment>
-      <button onClick={onClick}>{title}</button>
+      <button data-testid="project-open-button" onClick={onClick}>
+        {title}
+      </button>
     </React.Fragment>
   );
 };

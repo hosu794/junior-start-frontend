@@ -46,6 +46,7 @@ const ProjectComponent = () => {
             title={project.title}
             description={project.description}
             body={project.body}
+            name={project.name}
             numberOfSeats={project.numberOfSeats}
             teamMembers={project.teamMembers}
             mentor={project.mentor}
