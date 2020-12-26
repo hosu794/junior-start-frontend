@@ -1,21 +1,19 @@
+import { Box, Typography } from "@material-ui/core";
 import React from "react";
+import { ProjectPaper } from "../../styles/postStyles";
 import ProjectBackButton from "./ProjectBackButton";
 
 import ProjectForm from "./ProjectForm";
 
 const ProjectCreate = () => (
-  <div className="app">
-    <h1>Create a new project</h1>
-    <p>This is subsite for creating projects</p>
+  <ProjectPaper className="app">
+    <Typography variant="h2">Create a new project</Typography>
+    <Typography variant="h4">This is subsite for creating projects</Typography>
     <ProjectForm />
-    <div
-      style={{
-        marginTop: "5px",
-      }}
-    >
+    <Box mt={1}>
       <ProjectBackButton title="Go back" />
-    </div>
-  </div>
+    </Box>
+  </ProjectPaper>
 );
 
 export default ProjectCreate;

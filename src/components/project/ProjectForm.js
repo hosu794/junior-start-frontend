@@ -9,6 +9,8 @@ import { ContentState, EditorState } from "draft-js";
 import { useDispatch, useSelector } from "react-redux";
 import { projectActions } from "../../actions/project.actions";
 import { projectCreatedSelector } from "../../selectors/project.selectors";
+import { Box } from "@material-ui/core";
+import { Button } from "../../styles/customButton";
 
 const MyForm = () => {
   const loading = useSelector(projectCreatedSelector);
@@ -180,17 +182,27 @@ const MyForm = () => {
         onChange={formik.setFieldValue}
         onBlur={formik.handleBlur}
       />
-      <button
-        type="button"
-        className="outline"
-        onClick={formik.handleReset}
-        disabled={!formik.dirty || formik.isSubmitting}
-      >
-        Reset
-      </button>
-      <button type="submit" disabled={formik.isSubmitting}>
-        Submit
-      </button>
+      <Box flex mt={2}>
+        <Button
+          variant="contained"
+          color="primary"
+          type="button"
+          className="outline"
+          onClick={formik.handleReset}
+          disabled={!formik.dirty || formik.isSubmitting}
+        >
+          Reset
+        </Button>
+        <Button
+          marginLeft={2}
+          variant="contained"
+          color="primary"
+          type="submit"
+          disabled={formik.isSubmitting}
+        >
+          Submit
+        </Button>
+      </Box>
     </form>
   );
 };
