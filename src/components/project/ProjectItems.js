@@ -1,5 +1,5 @@
 import debounce from "lodash.debounce";
-import React, { Fragment } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { projectActions } from "../../actions";
 import PropTypes from "prop-types";

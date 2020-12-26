@@ -9,6 +9,8 @@ import { currrentUserSelector } from "../../selectors";
 import ProjectDeleteButton from "./ProjectDeleteButton";
 import ProjectCredentials from "./ProjectCredentials";
 import ProjectLoading from "./ProjectLoading";
+import { Box } from "@material-ui/core";
+import ProjectUpdateLinkButton from "./ProjectUpdateLinkButton";
 
 const ProjectComponent = () => {
   let { id } = useParams();
@@ -56,10 +58,21 @@ const ProjectComponent = () => {
       ) : (
         <ProjectLoading />
       )}
-      <ProjectBackButton onClick={handleBack} title="Back to projects" />
-      {isSameEmailAndNotNullCurrentUser ? (
-        <ProjectDeleteButton reload={true} id={project.id} />
-      ) : null}
+      <Box flex>
+        <Box>
+          <ProjectBackButton onClick={handleBack} title="Back to projects" />
+        </Box>
+        {isSameEmailAndNotNullCurrentUser ? (
+          <Box>
+            <ProjectDeleteButton y={2} reload={true} id={project.id} />
+          </Box>
+        ) : null}
+        {isSameEmailAndNotNullCurrentUser ? (
+          <Box>
+            <ProjectUpdateLinkButton x={0} y={2} id={project.id} />
+          </Box>
+        ) : null}
+      </Box>
     </div>
   );
 };

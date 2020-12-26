@@ -4,7 +4,7 @@ import { projectActions } from "../../actions";
 import { useHistory } from "react-router-dom";
 import { Button } from "../../styles/customButton";
 
-const ProjectDeleteButton = ({ id, reload }) => {
+const ProjectDeleteButton = ({ id, reload, y, x }) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -18,18 +18,17 @@ const ProjectDeleteButton = ({ id, reload }) => {
   };
 
   return (
-    <div>
-      <Button
-        marginX={1}
-        size="medium"
-        variant="contained"
-        color="secondary"
-        data-testid="project-delete-button"
-        onClick={reload ? onClickAndBack : onClick}
-      >
-        Delete
-      </Button>
-    </div>
+    <Button
+      mt={y}
+      marginX={x}
+      size="medium"
+      variant="contained"
+      color="secondary"
+      data-testid="project-delete-button"
+      onClick={reload ? onClickAndBack : onClick}
+    >
+      Delete
+    </Button>
   );
 };
 

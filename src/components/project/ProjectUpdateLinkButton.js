@@ -4,13 +4,13 @@ import PropTypes from "prop-types";
 import { Link as StyledLink } from "@material-ui/core";
 import { Button } from "../../styles/customButton";
 
-const ProjectUpdateLinkButton = ({ id }) => {
+const ProjectUpdateLinkButton = ({ id, x, y }) => {
   const updateProjectLink = `/project/update/${id}`;
 
   return (
     <Link to={updateProjectLink}>
       <StyledLink>
-        <Button color="primary" marginX={1} variant="contained">
+        <Button color="primary" marginX={x} marginTop={y} variant="contained">
           Update
         </Button>
       </StyledLink>

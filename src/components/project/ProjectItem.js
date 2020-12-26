@@ -29,10 +29,10 @@ const ProjectItem = ({
         <Box display="flex" m={1}>
           <ProjectLinkButton id={id} />
           {isSameEmailAndNotNullCurrentUser ? (
-            <ProjectDeleteButton reload={false} id={id} />
+            <ProjectDeleteButton x={1} y={0} reload={false} id={id} />
           ) : null}
           {isSameEmailAndNotNullCurrentUser ? (
-            <ProjectUpdateLinkButton id={id} />
+            <ProjectUpdateLinkButton x={2} y={0} id={id} />
           ) : null}
         </Box>
       </ProjectPaper>
