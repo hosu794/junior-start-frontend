@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { projectActions } from "../../actions";
 import { useHistory } from "react-router-dom";
+import { Button } from "../../styles/customButton";
 
 const ProjectDeleteButton = ({ id, reload }) => {
   const dispatch = useDispatch();
@@ -17,14 +18,18 @@ const ProjectDeleteButton = ({ id, reload }) => {
   };
 
   return (
-    <React.Fragment>
-      <button
+    <div>
+      <Button
+        marginX={1}
+        size="medium"
+        variant="contained"
+        color="secondary"
         data-testid="project-delete-button"
         onClick={reload ? onClickAndBack : onClick}
       >
         Delete
-      </button>
-    </React.Fragment>
+      </Button>
+    </div>
   );
 };
 

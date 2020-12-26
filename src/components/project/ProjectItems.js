@@ -44,23 +44,16 @@ const ProjectInfinityScroll = () => {
 
   return (
     <div>
-      <h1>Projects</h1>
-      <p>Scroll down to load more!!</p>
       {projects.map((i) => (
-        <Fragment key={i.id}>
-          <hr />
-          <div style={{ display: "flex" }}>
-            <ProjectItem
-              currentUser={currentLoggedUser}
-              title={i.title}
-              key={i.id}
-              creator={i.creator}
-              description={i.description}
-              id={i.id}
-              name={i.name}
-            />
-          </div>
-        </Fragment>
+        <ProjectItem
+          currentUser={currentLoggedUser}
+          title={i.title}
+          key={i.id}
+          creator={i.creator}
+          description={i.description}
+          id={i.id}
+          name={i.name}
+        />
       ))}
       <hr />
       {error && <div style={{ color: "#900" }}>{error}</div>}
