@@ -1,7 +1,6 @@
 import styled from "styled-components";
+import Grid from "@material-ui/core/Grid";
 
-export const ContentLayout = styled.div`
-  display: flex;
-  justify-content: space-between;
+export const ContentGrid = styled(Grid)`
   flex-grow: 1;
 `
