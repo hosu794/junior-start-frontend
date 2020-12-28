@@ -9,6 +9,8 @@ import { ContentState, EditorState } from "draft-js";
 import { useDispatch, useSelector } from "react-redux";
 import { projectActions } from "../../actions/project.actions";
 import { projectCreatedSelector } from "../../selectors/project.selectors";
+import { Button } from "../../styles/customButton";
+import { Box } from "@material-ui/core";
 
 const ProjectUpdateForm = ({
   body,
@@ -76,131 +78,148 @@ const ProjectUpdateForm = ({
   });
 
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <label htmlFor="name" style={{ display: "block" }}>
-        Name
-      </label>
-      <input
-        id="name"
-        placeholder="Enter your name"
-        type="text"
-        value={formik.values.name}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-      />
-      {formik.errors.name && formik.touched.name && (
-        <div style={{ color: "red", marginTop: ".5rem" }}>
-          {formik.errors.name}
-        </div>
-      )}
-      <label htmlFor="title" style={{ display: "block" }}>
-        Title
-      </label>
-      <input
-        id="title"
-        placeholder="Enter your title"
-        type="text"
-        value={formik.values.title}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-      />
-      {formik.errors.title && formik.touched.title && (
-        <div style={{ color: "red", marginTop: ".5rem" }}>
-          {formik.errors.title}
-        </div>
-      )}
+    <div
+      style={{
+        maxWidth: "45vw",
+      }}
+    >
+      <form onSubmit={formik.handleSubmit}>
+        <label htmlFor="name" style={{ display: "block" }}>
+          Name
+        </label>
+        <input
+          id="name"
+          placeholder="Enter your name"
+          type="text"
+          value={formik.values.name}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+        />
+        {formik.errors.name && formik.touched.name && (
+          <div style={{ color: "red", marginTop: ".5rem" }}>
+            {formik.errors.name}
+          </div>
+        )}
+        <label htmlFor="title" style={{ display: "block" }}>
+          Title
+        </label>
+        <input
+          id="title"
+          placeholder="Enter your title"
+          type="text"
+          value={formik.values.title}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+        />
+        {formik.errors.title && formik.touched.title && (
+          <div style={{ color: "red", marginTop: ".5rem" }}>
+            {formik.errors.title}
+          </div>
+        )}
 
-      <label htmlFor="description" style={{ display: "block" }}>
-        Description
-      </label>
-      <input
-        id="description"
-        placeholder="Enter your description"
-        type="text"
-        value={formik.values.description}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-      />
-      {formik.errors.description && formik.touched.description && (
-        <div style={{ color: "red", marginTop: ".5rem" }}>
-          {formik.errors.description}
-        </div>
-      )}
+        <label htmlFor="description" style={{ display: "block" }}>
+          Description
+        </label>
+        <input
+          id="description"
+          placeholder="Enter your description"
+          type="text"
+          value={formik.values.description}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+        />
+        {formik.errors.description && formik.touched.description && (
+          <div style={{ color: "red", marginTop: ".5rem" }}>
+            {formik.errors.description}
+          </div>
+        )}
 
-      <label htmlFor="" style={{ display: "block" }}>
-        Number of seats
-      </label>
-      <input
-        id="numberOfSeats"
-        placeholder="Enter your number"
-        type="text"
-        value={formik.values.numberOfSeats}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-      />
-      {formik.errors.numberOfSeats && formik.touched.numberOfSeats && (
-        <div style={{ color: "red", marginTop: ".5rem" }}>
-          {formik.errors.numberOfSeats}
-        </div>
-      )}
+        <label htmlFor="" style={{ display: "block" }}>
+          Number of seats
+        </label>
+        <input
+          id="numberOfSeats"
+          placeholder="Enter your number"
+          type="text"
+          value={formik.values.numberOfSeats}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+        />
+        {formik.errors.numberOfSeats && formik.touched.numberOfSeats && (
+          <div style={{ color: "red", marginTop: ".5rem" }}>
+            {formik.errors.numberOfSeats}
+          </div>
+        )}
 
-      <label htmlFor="" style={{ display: "block" }}>
-        Repository
-      </label>
-      <input
-        id="repository"
-        placeholder="Enter your repository"
-        type="text"
-        value={formik.values.repository}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-      />
-      {formik.errors.repository && formik.touched.repository && (
-        <div style={{ color: "red", marginTop: ".5rem" }}>
-          {formik.errors.repository}
-        </div>
-      )}
+        <label htmlFor="" style={{ display: "block" }}>
+          Repository
+        </label>
+        <input
+          id="repository"
+          placeholder="Enter your repository"
+          type="text"
+          value={formik.values.repository}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+        />
+        {formik.errors.repository && formik.touched.repository && (
+          <div style={{ color: "red", marginTop: ".5rem" }}>
+            {formik.errors.repository}
+          </div>
+        )}
 
-      <label htmlFor="" style={{ display: "block" }}>
-        Are you recruting to project?
-      </label>
-      <input
-        id="recruiting"
-        placeholder="Enter your recruiting"
-        type="checkbox"
-        value={formik.values.recruiting}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-      />
-      {formik.errors.recruiting && formik.touched.recruiting && (
-        <div style={{ color: "red", marginTop: ".5rem" }}>
-          {formik.errors.recruiting}
-        </div>
-      )}
+        <label htmlFor="" style={{ display: "block" }}>
+          Are you recruting to project?
+        </label>
+        <input
+          id="recruiting"
+          placeholder="Enter your recruiting"
+          type="checkbox"
+          value={formik.values.recruiting}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+        />
+        {formik.errors.recruiting && formik.touched.recruiting && (
+          <div style={{ color: "red", marginTop: ".5rem" }}>
+            {formik.errors.recruiting}
+          </div>
+        )}
 
-      <label
-        htmlFor="editorState"
-        style={{ display: "block", marginTop: ".5rem" }}
-      >
-        Body
-      </label>
-      <RichEditorExample
-        editorState={formik.values.editorState}
-        onChange={formik.setFieldValue}
-        onBlur={formik.handleBlur}
-      />
-      <button
-        type="button"
-        className="outline"
-        onClick={formik.handleReset}
-        disabled={!formik.dirty || formik.isSubmitting}
-      >
-        Reset
-      </button>
-      <button type="submit" disabled={formik.isSubmitting}>
-        Update
-      </button>
-    </form>
+        <label
+          htmlFor="editorState"
+          style={{ display: "block", marginTop: ".5rem" }}
+        >
+          Body
+        </label>
+        <RichEditorExample
+          editorState={formik.values.editorState}
+          onChange={formik.setFieldValue}
+          onBlur={formik.handleBlur}
+        />
+        <Box mt={2}>
+          <Button
+            mx={2}
+            variant="contained"
+            color="primary"
+            type="button"
+            className="outline"
+            onClick={formik.handleReset}
+            disabled={!formik.dirty || formik.isSubmitting}
+          >
+            Reset
+          </Button>
+          <Button
+            mx={2}
+            variant="contained"
+            color="secondary"
+            type="submit"
+            disabled={formik.isSubmitting}
+          >
+            Update
+          </Button>
+        </Box>
+      </form>
+    </div>
   );
 };
 

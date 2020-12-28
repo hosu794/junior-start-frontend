@@ -26,7 +26,11 @@ const ProjectCredentials = ({
       <Typography variant="h4" data-testid="project-name">
         Name: {name}
       </Typography>
-      <div
+      <Box
+        mb={2}
+        style={{
+          overflowWrap: "break-word",
+        }}
         mt={2}
         data-testid="project-body"
         dangerouslySetInnerHTML={{ __html: body }}
