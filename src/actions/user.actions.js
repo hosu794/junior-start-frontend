@@ -18,7 +18,6 @@ function getCurrentUser(service = userService.loadUser) {
         dispatch(success(user));
       },
       (error) => {
-        console.log(error);
         handleError(dispatch, error, failure);
       }
     );
