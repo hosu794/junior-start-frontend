@@ -15,7 +15,6 @@ function getCurrentUser(service = userService.loadUser) {
 
     return service().then(
       (user) => {
-        console.log(user);
         dispatch(success(user));
       },
       (error) => {
@@ -46,7 +45,7 @@ function checkUsernameAvailability(
 
     return service(username).then(
       (response) => {
-        dispatch(success(response.data.available));
+        dispatch(success(response.available));
       },
       (error) => {
         handleError(dispatch, error, failure);
@@ -76,7 +75,7 @@ function checkEmailAvailability(
 
     return service(email).then(
       (response) => {
-        dispatch(success(response.data.available));
+        dispatch(success(response.available));
       },
       (error) => {
         handleError(dispatch, error, failure);
