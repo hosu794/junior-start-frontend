@@ -4,6 +4,8 @@ import { apiConstants } from "../constants";
 
 import axios from "axios";
 
+import request from "../utils/api/request";
+
 export const userService = {
   loadUser,
   checkEmailAvaibility,
@@ -12,9 +14,13 @@ export const userService = {
 };
 
 function loadUser() {
-  return axios.get(`${apiConstants.API_ENDOINT}/api/user/me`, {
-    headers: authHeader(),
+  return request({
+    url: `${apiConstants.API_ENDOINT}/api/user/me`,
+    method: "GET",
   });
+  // return axios.get(`${apiConstants.API_ENDOINT}/api/user/me`, {
+  //   headers: authHeader(),
+  // });
 }
 
 function checkEmailAvaibility(email) {

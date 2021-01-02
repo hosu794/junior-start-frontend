@@ -15,7 +15,8 @@ function getCurrentUser(service = userService.loadUser) {
 
     return service().then(
       (user) => {
-        dispatch(success(user.data));
+        console.log(user);
+        dispatch(success(user));
       },
       (error) => {
         handleError(dispatch, error, failure);
