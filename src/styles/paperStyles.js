@@ -5,4 +5,4 @@ export const CustomPaper = styled(Paper)`
   display: flex;
   padding: 1.5em 1.5em;
   outline: 0;
-`
+`;

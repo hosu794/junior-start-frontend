@@ -14,5 +14,4 @@ export const registerValidationSchema = Yup.object({
   acceptedTerms: Yup.boolean()
     .required("Wymagane")
     .oneOf([true], "Musisz zaakceptować regulamin"),
-  recaptcha: Yup.string().required("Wymagana captcha"),
 });

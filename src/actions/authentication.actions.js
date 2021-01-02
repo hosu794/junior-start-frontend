@@ -1,8 +1,7 @@
-import { handleResponse } from "../utils/api";
 import { authenticationService } from "../services";
-import { history } from "../utils";
 import { authenticationConstants } from "../constants";
 import { alertActions } from "./";
+import { handleError } from "../utils/api/handleError";
 
 export const authenticationActions = {
   logout,
@@ -19,13 +18,9 @@ function signIn({ email, password }, service = authenticationService.signIn) {
     return service({ email, password }).then(
       (user) => {
         dispatch(success(user));
-        history.push("/");
-        window.location.reload(true);
       },
       (error) => {
-        handleResponse(error);
-        dispatch(failure(error.response.data.error));
-        dispatch(alertActions.error(error.response.data.error));
+        handleError(dispatch, error, failure);
       }
     );
   };
@@ -45,7 +40,6 @@ function signIn({ email, password }, service = authenticationService.signIn) {
 
 function logout(service = authenticationService.singOut) {
   service();
-  window.location.reload(true);
   return {
     type: authenticationConstants.SIGN_OUT,
   };
@@ -53,7 +47,6 @@ function logout(service = authenticationService.singOut) {
 
 function logoutAuth02token(service = authenticationService.logoutAuth02token) {
   service();
-  window.location.reload(true);
   return {
     type: authenticationConstants.SIGN_OUT,
   };
@@ -66,14 +59,10 @@ function signUp(user, service = authenticationService.signUp) {
     return service(user).then(
       (user) => {
         dispatch(success());
-        history.push("/login");
-        window.location.reload(true);
         dispatch(alertActions.success("Registration successful"));
       },
       (error) => {
-        handleResponse(error);
-        dispatch(failure(error.response.data.message));
-        dispatch(alertActions.error(error.response.data.message));
+        handleError(dispatch, error, failure);
       }
     );
   };

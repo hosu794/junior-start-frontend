@@ -1,7 +1,7 @@
-import { render, fireEvent, wait } from "@testing-library/react";
+import { render, fireEvent, act, wait } from "@testing-library/react";
 import React from "react";
 
-import SignUpForm from "../../components/auth/SignUpForm";
+import SignInForm from "../../../components/auth/SignInForm";
 
 import { MemoryRouter } from "react-router-dom";
 import configureStore from "redux-mock-store";
@@ -19,7 +19,7 @@ let store = mockStore({
 const TestingComponent = () => (
   <MemoryRouter>
     <Provider store={store}>
-      <SignUpForm />
+      <SignInForm />
     </Provider>
   </MemoryRouter>
 );
@@ -29,43 +29,27 @@ store.dispatch = jest.fn();
 it("submits correct values", async () => {
   const { container } = render(<TestingComponent />);
 
-  const username = container.querySelector('input[name="username"]');
-  const password = container.querySelector('input[name="password"]');
-  const passwordConfirm = container.querySelector(
-    'input[name="passwordConfirm"]'
-  );
   const email = container.querySelector('input[name="email"]');
-  const acceptedTerms = container.querySelector('input[name="acceptedTerms"]');
+  const password = container.querySelector('input[name="password"]');
+  const staySignedIn = container.querySelector('input[name="staySignedIn"]');
   const submit = container.querySelector('button[type="submit"]');
 
   await wait(() => {
-    fireEvent.change(acceptedTerms, {
+    fireEvent.change(email, {
       target: {
-        value: true,
-      },
-    });
-
-    fireEvent.change(username, {
-      target: {
-        value: "username",
+        value: "mock@email.com",
       },
     });
 
     fireEvent.change(password, {
       target: {
-        value: "password",
+        value: "mockpassword",
       },
     });
 
-    fireEvent.change(passwordConfirm, {
+    fireEvent.change(staySignedIn, {
       target: {
-        value: "password",
-      },
-    });
-
-    fireEvent.change(email, {
-      target: {
-        value: "email@example.com",
+        value: true,
       },
     });
   });
@@ -74,7 +58,5 @@ it("submits correct values", async () => {
     fireEvent.click(submit);
   });
 
-  wait(() => {
-    expect(store.dispatch).toHaveBeenCalledTimes(1);
-  });
+  expect(store.dispatch).toHaveBeenCalledTimes(1);
 });
