@@ -2,6 +2,8 @@ import axios from "axios";
 import { apiConstants } from "../constants";
 import { authHeader } from "../utils/api/authHeader";
 
+import request from "../utils/api/request";
+
 export const projectService = {
   findById,
   findAll,
@@ -13,39 +15,52 @@ export const projectService = {
 };
 
 function findAll(page) {
-  return axios.get(`${apiConstants.API_ENDOINT}/api/project?page=${page}`, {});
+  return request({
+    url: `${apiConstants.API_ENDOINT}/api/project?page=${page}`,
+    method: "GET",
+  });
 }
 
 function saveProject(project) {
-  return axios.post(`${apiConstants.API_ENDOINT}/api/project`, project, {
-    headers: authHeader(),
+  return request({
+    url: `${apiConstants.API_ENDOINT}/api/project`,
+    body: JSON.stringify(project),
+    method: "POST",
   });
 }
 
 function updateProject(updateRequest, id) {
-  return axios.put(
-    `${apiConstants.API_ENDOINT}/api/project/${id}`,
-    updateRequest,
-    {
-      headers: authHeader(),
-    }
-  );
+  return request({
+    url: `${apiConstants.API_ENDOINT}/api/project/${id}`,
+    method: "PUT",
+    body: JSON.stringify(updateRequest),
+  });
 }
 
 function deleteProject(id) {
-  return axios.delete(`${apiConstants.API_ENDOINT}/api/project/${id}`, {
-    headers: authHeader(),
+  return request({
+    url: `${apiConstants.API_ENDOINT}/api/project/${id}`,
+    method: "DELETE",
   });
 }
 
 function findByTitle(title) {
-  return axios.get(`${apiConstants.API_ENDOINT}/api/project/title/${title}`);
+  return request({
+    url: `${apiConstants.API_ENDOINT}/api/project/title/${title}`,
+    method: "GET",
+  });
 }
 
 function findById(id) {
-  return axios.get(`${apiConstants.API_ENDOINT}/api/project/${id}`);
+  return request({
+    url: `${apiConstants.API_ENDOINT}/api/project/${id}`,
+    method: "GET",
+  });
 }
 
 function findByName(name) {
-  return axios.get(`${apiConstants.API_ENDOINT}/api/project/name/${name}`);
+  return request({
+    url: `${apiConstants.API_ENDOINT}/api/project/name/${name}`,
+    method: "GET",
+  });
 }

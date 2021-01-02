@@ -18,7 +18,7 @@ function saveProject(project, service = projectService.saveProject) {
 
     return service(project).then(
       (response) => {
-        dispatch(success(response.data));
+        dispatch(success(response));
       },
       (error) => {
         handleError(dispatch, error, failure);
@@ -45,7 +45,7 @@ function findAll(page, service = projectService.findAll) {
 
     return service(page).then(
       (response) => {
-        dispatch(success(response.data));
+        dispatch(success(response));
       },
       (error) => {
         handleError(dispatch, error, failure);
@@ -72,7 +72,7 @@ function updateProject(project, id, service = projectService.updateProject) {
 
     return service(project, id).then(
       (response) => {
-        dispatch(success(response.data));
+        dispatch(success(response));
       },
       (error) => {
         handleError(dispatch, error, failure);
@@ -99,7 +99,7 @@ function deleteProject(id, service = projectService.deleteProject) {
 
     return service(id).then(
       (response) => {
-        dispatch(success(response.data));
+        dispatch(success(response));
       },
       (error) => {
         handleError(dispatch, error, failure);
@@ -126,7 +126,7 @@ function getByTitle(title, service = projectService.findByTitle) {
 
     return service(title).then(
       (response) => {
-        dispatch(success(response.data));
+        dispatch(success(response));
       },
       (error) => {
         handleError(dispatch, error, failure);
@@ -153,7 +153,7 @@ function getByName(name, service = projectService.findByName) {
 
     return service(name).then(
       (response) => {
-        dispatch(success(response.data));
+        dispatch(success(response));
       },
       (error) => {
         handleError(dispatch, error, failure);
@@ -180,7 +180,7 @@ function findById(id, service = projectService.findById) {
 
     return service(id).then(
       (response) => {
-        dispatch(success(response.data));
+        dispatch(success(response));
       },
       (error) => {
         handleError(dispatch, error, failure);
