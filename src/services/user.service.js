@@ -1,8 +1,4 @@
-import { authHeader } from "../utils/api/authHeader";
-
 import { apiConstants } from "../constants";
-
-import axios from "axios";
 
 import request from "../utils/api/request";
 
@@ -18,47 +14,27 @@ function loadUser() {
     url: `${apiConstants.API_ENDOINT}/api/user/me`,
     method: "GET",
   });
-  // return axios.get(`${apiConstants.API_ENDOINT}/api/user/me`, {
-  //   headers: authHeader(),
-  // });
 }
 
 function checkEmailAvaibility(email) {
-  const body = JSON.stringify({ email });
-
-  return axios.post(
-    `${apiConstants.API_URL}/api/user/checkEmailAvailability`,
-    body,
-    {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
+  return request({
+    url: `${apiConstants.API_URL}/api/user/checkEmailAvailability`,
+    body: JSON.stringify({ email }),
+    method: "POST",
+  });
 }
 
 function checkUsernameAvailability(username) {
-  const body = JSON.stringify({ username });
-
-  return axios.post(
-    `${apiConstants.API_URL}/api/user/checkUsernameAvailability`,
-    body,
-    {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
+  return request({
+    url: `${apiConstants.API_ENDOINT}/api/user/checkUsernameAvailability`,
+    method: "POST",
+    body: JSON.stringify({ username }),
+  });
 }
 
 function getUserProfile(username) {
-  return axios.get(
-    `${apiConstants.API_URL}/api/user/${username}`,
-    {},
-    {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
+  return request({
+    url: `${apiConstants.API_ENDOINT}/api/user/${username}`,
+    method: "GET",
+  });
 }
