@@ -2,6 +2,8 @@ import { apiConstants } from "../constants";
 
 import axios from "axios";
 
+import request from "../utils/api/request";
+
 export const authenticationService = {
   signIn,
   signUp,
@@ -10,28 +12,22 @@ export const authenticationService = {
 };
 
 function signIn({ email, password }) {
-  const body = JSON.stringify({ email, password });
+  return request({
+    url: `${apiConstants.API_ENDOINT}/api/auth/signin`,
+    method: "POST",
+    body: JSON.stringify({ email, password }),
+  }).then((user) => {
+    localStorage.setItem("user", JSON.stringify(user.accessToken));
 
-  return axios
-    .post(`${apiConstants.API_ENDOINT}/api/auth/signin`, body, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-    .then((user) => {
-      localStorage.setItem("user", JSON.stringify(user.data.accessToken));
-
-      return user;
-    });
+    return user;
+  });
 }
 
 function signUp(user) {
-  const body = JSON.stringify(user);
-
-  return axios.post(`${apiConstants.API_ENDOINT}/api/auth/signup`, body, {
-    headers: {
-      "Content-Type": "application/json",
-    },
+  return request({
+    url: `${apiConstants.API_ENDOINT}/api/auth/signup`,
+    method: "POST",
+    body: JSON.stringify(user),
   });
 }
 

@@ -7,7 +7,7 @@ export function handleError(dispatch, error, failure) {
 
   if (isCorrectValues) {
     handleResponse(error);
-    dispatch(failure(error.response.data.message));
-    dispatch(alertActions.error(error.response.data.message));
+    dispatch(failure(error.message));
+    dispatch(alertActions.error(error.message));
   }
 }
